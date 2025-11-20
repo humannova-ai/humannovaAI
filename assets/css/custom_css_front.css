@@ -1,0 +1,379 @@
+/* Styles personnalisés supplémentaires pour la page front */
+
+/* Animation pour les cartes d'événements */
+.event-card {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.event-card:nth-child(1) { animation-delay: 0.1s; }
+.event-card:nth-child(2) { animation-delay: 0.2s; }
+.event-card:nth-child(3) { animation-delay: 0.3s; }
+.event-card:nth-child(4) { animation-delay: 0.4s; }
+.event-card:nth-child(5) { animation-delay: 0.5s; }
+.event-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Effet de survol pour la barre de recherche */
+.search-bar {
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+/* Bouton Détails amélioré */
+.card-cta {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-cta::after {
+    content: '→';
+    position: absolute;
+    right: 20px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.card-cta:hover::after {
+    opacity: 1;
+    right: 15px;
+}
+
+/* Loader pour les requêtes AJAX */
+.loader {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--accent-cyan);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Style pour les badges de score */
+.score-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.score-badge.excellent {
+    background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+    color: #000;
+}
+
+.score-badge.good {
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+    color: #000;
+}
+
+.score-badge.average {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    color: #fff;
+}
+
+.score-badge.poor {
+    background: linear-gradient(135deg, var(--accent-red), var(--accent-purple));
+    color: #fff;
+}
+
+/* Tooltip personnalisé */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background: rgba(0, 0, 0, 0.9);
+    color: var(--text-primary);
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1000;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border: 1px solid var(--accent-cyan);
+    font-size: 12px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Progress bar pour le quiz */
+.quiz-progress {
+    width: 100%;
+    height: 8px;
+    background: var(--carbon-dark);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.quiz-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+    transition: width 0.3s ease;
+    border-radius: 10px;
+}
+
+/* Timer pour le quiz */
+.quiz-timer {
+    position: fixed;
+    top: 100px;
+    right: 30px;
+    background: rgba(18, 18, 18, 0.9);
+    border: 2px solid var(--accent-cyan);
+    border-radius: 12px;
+    padding: 15px 25px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.quiz-timer.warning {
+    border-color: var(--accent-red);
+    color: var(--accent-red);
+    animation: pulse 1s infinite;
+}
+
+/* Confetti animation pour succès */
+@keyframes confetti-fall {
+    0% {
+        top: -10%;
+        opacity: 1;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: var(--accent-cyan);
+    animation: confetti-fall 3s linear infinite;
+}
+
+/* Skeleton loader */
+.skeleton {
+    background: linear-gradient(90deg, 
+        var(--carbon-medium) 25%, 
+        var(--carbon-light) 50%, 
+        var(--carbon-medium) 75%
+    );
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 8px;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.skeleton-card {
+    height: 400px;
+    margin: 20px;
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+}
+
+.empty-state-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.empty-state-text {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* Notification toast */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, var(--carbon-medium), var(--carbon-dark));
+    border: 2px solid var(--accent-cyan);
+    border-radius: 12px;
+    padding: 20px 25px;
+    min-width: 300px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.toast.success {
+    border-color: var(--accent-green);
+}
+
+.toast.error {
+    border-color: var(--accent-red);
+}
+
+.toast-title {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: var(--accent-cyan);
+}
+
+.toast-message {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* Responsive amélioration */
+@media (max-width: 480px) {
+    .search-bar {
+        top: 70px;
+        padding: 12px 20px;
+    }
+    
+    .admin-events-section {
+        margin-top: 150px;
+    }
+    
+    .quiz-timer {
+        top: 70px;
+        right: 15px;
+        padding: 10px 15px;
+        font-size: 18px;
+    }
+    
+    .toast {
+        bottom: 15px;
+        right: 15px;
+        left: 15px;
+        min-width: auto;
+    }
+}
+
+/* Print styles */
+@media print {
+    .search-bar,
+    .header,
+    .action-buttons,
+    .quiz-timer,
+    .toast {
+        display: none !important;
+    }
+    
+    .details-modal-content {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+}
+
+/* Accessibilité */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Focus visible pour l'accessibilité */
+*:focus-visible {
+    outline: 2px solid var(--accent-cyan);
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--accent-cyan);
+    outline-offset: 2px;
+}
+
+/* Dark mode automatique respecté */
+@media (prefers-color-scheme: light) {
+    .search-bar {
+        background: rgba(255, 255, 255, 0.85);
+        border-color: rgba(0, 0, 0, 0.3);
+    }
+    
+    .search-input {
+        color: #000;
+    }
+}
+
+/* Animations réduites pour les préférences utilisateur */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
