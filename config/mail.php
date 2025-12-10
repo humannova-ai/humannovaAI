@@ -1,6 +1,7 @@
 <?php
 /**
  * Configuration Brevo SMTP
+ * 
  * Pour l'envoi d'emails transactionnels
  */
 

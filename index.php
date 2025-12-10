@@ -171,42 +171,7 @@
         </div>
     </section>
 
-    <section class="features">
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">📅</div>
-                <h3 class="feature-title">Gestion d'Événements</h3>
-                <p class="feature-desc">
-                    Créez et gérez facilement vos événements avec un système CRUD complet.
-                    Ajoutez des images, des descriptions et des dates.
-                </p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎯</div>
-                <h3 class="feature-title">Quiz Interactifs</h3>
-                <p class="feature-desc">
-                    Créez des quiz avec plusieurs questions et réponses.
-                    Suivez les scores et les performances des participants.
-                </p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">👥</div>
-                <h3 class="feature-title">Participations</h3>
-                <p class="feature-desc">
-                    Gérez les participations avec jointure entre utilisateurs et événements.
-                    Approuvez ou rejetez les demandes.
-                </p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3 class="feature-title">Statistiques</h3>
-                <p class="feature-desc">
-                    Visualisez les statistiques en temps réel avec des graphiques.
-                    Suivez l'activité de votre plateforme.
-                </p>
-            </div>
-        </div>
-    </section>
+    
 
     <footer style="text-align: center; padding: 40px; color: var(--text-dim);">
         <p>&copy; 2025 Human Nova AI - Projet de Gestion d'Événements</p>
