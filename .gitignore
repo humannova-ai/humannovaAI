@@ -1,0 +1,31 @@
+# Dependencies
+/vendor/
+
+# Environment files
+.env
+.env.local
+
+# Database files
+*.sql
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Config files with sensitive data
+config/database.php
+config/email.php
