@@ -1,0 +1,90 @@
+/* Views/css/reactions.css */
+.reactions-section {
+    margin: 40px 0;
+    padding: 25px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+}
+
+.reactions-section h3 {
+    margin-top: 0;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+}
+
+.reactions-section p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.emoji-picker {
+    display: flex;
+    gap: 15px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.emoji-btn {
+    font-size: 28px;
+    padding: 10px 15px;
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    min-width: 60px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.emoji-btn:hover {
+    transform: scale(1.15);
+    background: var(--bg-tertiary);
+    border-color: var(--primary-color);
+}
+
+.emoji-btn.active {
+    border-color: var(--primary-color);
+    background: var(--bg-tertiary);
+    transform: scale(1.1);
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.1);
+}
+
+.reactions-stats {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.reactions-stats p {
+    width: 100%;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.reaction-stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    background: var(--bg-tertiary);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.reaction-emoji {
+    font-size: 20px;
+}
+
+.reaction-count {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
