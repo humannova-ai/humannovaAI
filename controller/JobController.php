@@ -5,7 +5,7 @@
  */
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../config/databaseysf.php';
 require_once __DIR__ . '/../model/Job.php';
 require_once __DIR__ . '/../model/Application.php';
 require_once __DIR__ . '/../config/ai.php';
