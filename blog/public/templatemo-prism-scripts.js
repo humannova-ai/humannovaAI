@@ -311,14 +311,20 @@ https://templatemo.com/tm-600-prism-flux
             displaySkills();
         }
 
-        // Event listeners
-        document.getElementById('nextBtn').addEventListener('click', nextSlide);
-        document.getElementById('prevBtn').addEventListener('click', prevSlide);
+        // Event listeners (guard DOM access to avoid errors on pages missing sections)
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const carouselEl = document.getElementById('carousel');
 
-        // Auto-rotate carousel
-        setInterval(nextSlide, 5000);
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
 
-        // Keyboard navigation
+        // Auto-rotate carousel only if a carousel exists
+        if (carouselEl && portfolioData && portfolioData.length > 0) {
+            setInterval(nextSlide, 5000);
+        }
+
+        // Keyboard navigation (global)
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') prevSlide();
             if (e.key === 'ArrowRight') nextSlide();
@@ -329,62 +335,69 @@ https://templatemo.com/tm-600-prism-flux
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
-                updateCarousel();
+                if (typeof updateCarousel === 'function') updateCarousel();
             }, 250);
         });
 
-        // Initialize on load
-        initCarousel();
-        initSkillsGrid();
-        initParticles();
+        // Initialize components only if their root elements exist
+        if (carouselEl) initCarousel();
+        if (document.getElementById('skillsGrid')) initSkillsGrid();
+        if (document.getElementById('particles')) initParticles();
 
         // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
 
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+        }
 
         // Header scroll effect
         const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+        if (header) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        }
 
         // Smooth scrolling and active navigation
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-link');
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetSection = document.getElementById(targetId);
-                
-                if (targetSection) {
-                    const headerHeight = header.offsetHeight;
-                    const targetPosition = targetSection.offsetTop - headerHeight;
+        if (navLinks && navLinks.length > 0) {
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
                     
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    navMenu.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                }
+                    if (targetSection) {
+                        const headerHeight = header ? header.offsetHeight : 0;
+                        const targetPosition = targetSection.offsetTop - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (navMenu) navMenu.classList.remove('active');
+                        if (menuToggle) menuToggle.classList.remove('active');
+                    }
+                });
             });
-        });
+        }
 
         // Update active navigation on scroll
         function updateActiveNav() {
+            if (!sections || sections.length === 0 || !navLinks || navLinks.length === 0) return;
             const scrollPosition = window.scrollY + 100;
             
             sections.forEach(section => {
@@ -395,7 +408,7 @@ https://templatemo.com/tm-600-prism-flux
                 if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                     navLinks.forEach(link => {
                         link.classList.remove('active');
-                        const href = link.getAttribute('href').substring(1);
+                        const href = (link.getAttribute('href') || '').substring(1);
                         if (href === sectionId) {
                             link.classList.add('active');
                         }
@@ -408,9 +421,9 @@ https://templatemo.com/tm-600-prism-flux
 
         // Animated counter for stats
         function animateCounter(element) {
-            const target = parseInt(element.dataset.target);
+            const target = parseInt(element.dataset.target || '0');
             const duration = 2000;
-            const step = target / (duration / 16);
+            const step = target / (duration / 16 || 1);
             let current = 0;
             
             const counter = setInterval(() => {
@@ -449,27 +462,29 @@ https://templatemo.com/tm-600-prism-flux
             observer.observe(statsSection);
         }
 
-        // Form submission
+        // Form submission (guarded)
         const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData);
-            
-            // Show success message
-            alert(`Thank you ${data.name}! Your message has been transmitted successfully. We'll respond within 24 hours.`);
-            
-            // Reset form
-            contactForm.reset();
-        });
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(contactForm);
+                const data = Object.fromEntries(formData);
+                
+                // Show success message
+                alert(`Thank you ${data.name || ''}! Your message has been transmitted successfully. We'll respond within 24 hours.`);
+                
+                // Reset form
+                contactForm.reset();
+            });
+        }
 
-        // Loading screen
+        // Loading screen (guarded)
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const loader = document.getElementById('loader');
-                loader.classList.add('hidden');
+                if (loader) loader.classList.add('hidden');
             }, 1500);
         });
 

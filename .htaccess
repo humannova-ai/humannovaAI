@@ -6,6 +6,9 @@ RewriteBase /nour/
 RewriteRule ^$ blog/index.php [L]
 RewriteRule ^index\.php$ blog/index.php [L]
 
+# Allow direct serving of public assets (images, css, js) without rewriting
+RewriteRule ^public/ - [L]
+
 # Admin routes
 RewriteRule ^admin/?(.*)$ blog_admin/index.php?$1 [L,QSA]
 

@@ -1,4 +1,10 @@
 <?php
+// Ensure ROOT_PATH is defined when this controller is loaded directly
+if (!defined('ROOT_PATH')) {
+    // Two levels up from controllers => project root (`nour`)
+    define('ROOT_PATH', realpath(dirname(__DIR__, 2)) ?: dirname(__DIR__, 2));
+}
+
 require_once ROOT_PATH . '/shared/Models/Article.php';
 require_once ROOT_PATH . '/shared/Models/Interaction.php';
 
@@ -7,8 +13,13 @@ class ArticleController {
     private $blogPath;
 
     public function __construct() {
+        // Start session only if possible (avoid "headers already sent" warnings)
         if (session_status() === PHP_SESSION_NONE) {
-            session_start();
+            if (!headers_sent()) {
+                session_start();
+            } else {
+                error_log('ArticleController: session not started because headers already sent.');
+            }
         }
         $this->model = new Article();
         // Resolve blog base path so controller works when invoked from admin (`blog_admin`) too
