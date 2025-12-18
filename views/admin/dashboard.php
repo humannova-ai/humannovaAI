@@ -90,7 +90,7 @@ $topParticipants = $stmt->fetchAll();
 // Prepare chart data
 $eventTypes = [];
 $eventCounts = [];
-foreach($eventsByType as $row) {
+foreach ($eventsByType as $row) {
     $eventTypes[] = $row['type'] === 'quiz' ? 'Quiz' : 'Événements';
     $eventCounts[] = $row['count'];
 }
@@ -98,12 +98,15 @@ foreach($eventsByType as $row) {
 $statusLabels = [];
 $statusCounts = [];
 $statusColors = [];
-foreach($participationsByStatus as $row) {
+foreach ($participationsByStatus as $row) {
     $statusLabels[] = ucfirst(str_replace('_', ' ', $row['statut']));
     $statusCounts[] = $row['count'];
-    if ($row['statut'] === 'approuve') $statusColors[] = '#00ff88';
-    elseif ($row['statut'] === 'rejete') $statusColors[] = '#ff3333';
-    else $statusColors[] = '#ff9500';
+    if ($row['statut'] === 'approuve')
+        $statusColors[] = '#00ff88';
+    elseif ($row['statut'] === 'rejete')
+        $statusColors[] = '#ff3333';
+    else
+        $statusColors[] = '#ff9500';
 }
 
 // Get participations trend for last 7 days
@@ -125,6 +128,7 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -146,10 +150,14 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             --text-primary: #ffffff;
             --text-secondary: #94a3b8;
             --text-dim: #64748b;
-            --border-color: rgba(255,255,255,0.08);
+            --border-color: rgba(255, 255, 255, 0.08);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             background: var(--bg-primary);
@@ -162,8 +170,10 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
         /* Animated Background */
         .animated-bg {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
             z-index: 0;
         }
@@ -177,21 +187,32 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
         }
 
         .orb-1 {
-            width: 500px; height: 500px;
+            width: 500px;
+            height: 500px;
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-            top: -150px; left: -100px;
+            top: -150px;
+            left: -100px;
         }
 
         .orb-2 {
-            width: 400px; height: 400px;
+            width: 400px;
+            height: 400px;
             background: linear-gradient(135deg, var(--accent-purple), #ec4899);
-            bottom: -100px; right: -100px;
+            bottom: -100px;
+            right: -100px;
             animation-delay: -5s;
         }
 
         @keyframes orbFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(50px, 50px) scale(1.1); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(50px, 50px) scale(1.1);
+            }
         }
 
         /* Sidebar */
@@ -219,7 +240,8 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
         }
 
         .logo-icon {
-            width: 48px; height: 48px;
+            width: 48px;
+            height: 48px;
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
             border-radius: 14px;
             display: flex;
@@ -235,15 +257,22 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             font-weight: 800;
         }
 
-        .logo-text span:first-child { color: var(--accent-cyan); }
-        .logo-text span:last-child { color: var(--accent-purple); }
+        .logo-text span:first-child {
+            color: var(--accent-cyan);
+        }
+
+        .logo-text span:last-child {
+            color: var(--accent-purple);
+        }
 
         .sidebar-nav {
             flex: 1;
             padding: 25px 15px;
         }
 
-        .nav-section { margin-bottom: 25px; }
+        .nav-section {
+            margin-bottom: 25px;
+        }
 
         .nav-section-title {
             color: var(--text-dim);
@@ -271,21 +300,37 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
         .nav-link::before {
             content: '';
             position: absolute;
-            left: 0; top: 50%;
+            left: 0;
+            top: 50%;
             transform: translateY(-50%);
-            width: 4px; height: 0;
+            width: 4px;
+            height: 0;
             background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));
             border-radius: 0 4px 4px 0;
             transition: height 0.3s;
         }
 
-        .nav-link:hover { background: var(--bg-hover); color: var(--text-primary); }
-        .nav-link:hover::before { height: 60%; }
-        .nav-link.active { background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(168,85,247,0.1)); color: var(--text-primary); }
-        .nav-link.active::before { height: 70%; }
+        .nav-link:hover {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+        }
+
+        .nav-link:hover::before {
+            height: 60%;
+        }
+
+        .nav-link.active {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(168, 85, 247, 0.1));
+            color: var(--text-primary);
+        }
+
+        .nav-link.active::before {
+            height: 70%;
+        }
 
         .nav-icon {
-            width: 42px; height: 42px;
+            width: 42px;
+            height: 42px;
             background: var(--bg-tertiary);
             border-radius: 12px;
             display: flex;
@@ -294,11 +339,15 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             font-size: 20px;
         }
 
-        .nav-link:hover .nav-icon, .nav-link.active .nav-icon {
-            background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(168,85,247,0.2));
+        .nav-link:hover .nav-icon,
+        .nav-link.active .nav-icon {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(168, 85, 247, 0.2));
         }
 
-        .nav-label { font-size: 14px; font-weight: 600; }
+        .nav-label {
+            font-size: 14px;
+            font-weight: 600;
+        }
 
         /* Main Content */
         .main-content {
@@ -318,8 +367,15 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .header-content h1 {
@@ -338,15 +394,25 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
 
         .header-date::before {
             content: '';
-            width: 8px; height: 8px;
+            width: 8px;
+            height: 8px;
             background: var(--accent-green);
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(1.2);
+            }
         }
 
         .btn {
@@ -366,12 +432,12 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
         .btn-primary {
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
             color: #000;
-            box-shadow: 0 8px 25px rgba(0,212,255,0.3);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(0,212,255,0.4);
+            box-shadow: 0 12px 35px rgba(0, 212, 255, 0.4);
         }
 
         /* Stats Grid */
@@ -391,20 +457,38 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             animation: fadeUp 0.6s ease backwards;
         }
 
-        .stat-card:nth-child(1) { animation-delay: 0.1s; }
-        .stat-card:nth-child(2) { animation-delay: 0.2s; }
-        .stat-card:nth-child(3) { animation-delay: 0.3s; }
-        .stat-card:nth-child(4) { animation-delay: 0.4s; }
+        .stat-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .stat-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .stat-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .stat-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .stat-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(0,212,255,0.3);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
         }
 
         .stat-header {
@@ -415,7 +499,8 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
         }
 
         .stat-icon {
-            width: 56px; height: 56px;
+            width: 56px;
+            height: 56px;
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -423,10 +508,21 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             font-size: 28px;
         }
 
-        .stat-icon.users { background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(168,85,247,0.1)); }
-        .stat-icon.events { background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(59,130,246,0.1)); }
-        .stat-icon.participations { background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(34,197,94,0.1)); }
-        .stat-icon.quiz { background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(245,158,11,0.1)); }
+        .stat-icon.users {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(168, 85, 247, 0.1));
+        }
+
+        .stat-icon.events {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1));
+        }
+
+        .stat-icon.participations {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.1));
+        }
+
+        .stat-icon.quiz {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.1));
+        }
 
         .stat-badge {
             padding: 6px 12px;
@@ -435,10 +531,25 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             font-weight: 700;
         }
 
-        .badge-up { background: rgba(34,197,94,0.15); color: var(--accent-green); }
-        .badge-down { background: rgba(239,68,68,0.15); color: var(--accent-red); }
-        .badge-neutral { background: rgba(255,255,255,0.1); color: var(--text-secondary); }
-        .badge-active { background: rgba(59,130,246,0.2); color: var(--accent-blue); }
+        .badge-up {
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--accent-green);
+        }
+
+        .badge-down {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--accent-red);
+        }
+
+        .badge-neutral {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        .badge-active {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--accent-blue);
+        }
 
         .stat-value {
             font-size: 42px;
@@ -472,11 +583,12 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
 
         .quick-stat-card:hover {
             transform: translateX(8px);
-            border-color: rgba(0,212,255,0.3);
+            border-color: rgba(0, 212, 255, 0.3);
         }
 
         .quick-stat-icon {
-            width: 64px; height: 64px;
+            width: 64px;
+            height: 64px;
             border-radius: 18px;
             display: flex;
             align-items: center;
@@ -484,9 +596,17 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             font-size: 30px;
         }
 
-        .quick-stat-icon.green { background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(34,197,94,0.1)); }
-        .quick-stat-icon.blue { background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(59,130,246,0.1)); }
-        .quick-stat-icon.purple { background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(168,85,247,0.1)); }
+        .quick-stat-icon.green {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.1));
+        }
+
+        .quick-stat-icon.blue {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1));
+        }
+
+        .quick-stat-icon.purple {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(168, 85, 247, 0.1));
+        }
 
         .quick-stat-value {
             font-size: 36px;
@@ -494,11 +614,22 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             margin-bottom: 4px;
         }
 
-        .quick-stat-value.green { color: var(--accent-green); }
-        .quick-stat-value.blue { color: var(--accent-blue); }
-        .quick-stat-value.purple { color: var(--accent-purple); }
+        .quick-stat-value.green {
+            color: var(--accent-green);
+        }
 
-        .quick-stat-label { color: var(--text-dim); font-size: 14px; }
+        .quick-stat-value.blue {
+            color: var(--accent-blue);
+        }
+
+        .quick-stat-value.purple {
+            color: var(--accent-purple);
+        }
+
+        .quick-stat-label {
+            color: var(--text-dim);
+            font-size: 14px;
+        }
 
         /* Charts */
         .charts-row {
@@ -524,7 +655,9 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             font-weight: 700;
         }
 
-        .chart-container { height: 220px; }
+        .chart-container {
+            height: 220px;
+        }
 
         /* Tables */
         .tables-row {
@@ -560,9 +693,14 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             font-weight: 600;
         }
 
-        .view-all-btn:hover { transform: translateX(5px); }
+        .view-all-btn:hover {
+            transform: translateX(5px);
+        }
 
-        table { width: 100%; border-collapse: collapse; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
         th {
             text-align: left;
@@ -580,8 +718,13 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             font-size: 14px;
         }
 
-        tr:last-child td { border-bottom: none; }
-        tr:hover td { background: var(--bg-hover); }
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: var(--bg-hover);
+        }
 
         .user-cell {
             display: flex;
@@ -590,7 +733,8 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
         }
 
         .user-avatar {
-            width: 44px; height: 44px;
+            width: 44px;
+            height: 44px;
             border-radius: 12px;
             background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
             display: flex;
@@ -600,8 +744,14 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             font-weight: 700;
         }
 
-        .user-name { font-weight: 600; }
-        .user-email { font-size: 12px; color: var(--text-dim); }
+        .user-name {
+            font-weight: 600;
+        }
+
+        .user-email {
+            font-size: 12px;
+            color: var(--text-dim);
+        }
 
         .status-badge {
             padding: 6px 14px;
@@ -611,12 +761,27 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             text-transform: uppercase;
         }
 
-        .status-approved { background: rgba(34,197,94,0.15); color: var(--accent-green); }
-        .status-pending { background: rgba(245,158,11,0.15); color: var(--accent-orange); }
-        .status-rejected { background: rgba(239,68,68,0.15); color: var(--accent-red); }
+        .status-approved {
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--accent-green);
+        }
+
+        .status-pending {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--accent-orange);
+        }
+
+        .status-rejected {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--accent-red);
+        }
 
         /* Upcoming Events */
-        .upcoming-events { display: flex; flex-direction: column; gap: 15px; }
+        .upcoming-events {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
         .event-item {
             display: flex;
@@ -628,10 +793,14 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             transition: all 0.3s;
         }
 
-        .event-item:hover { background: var(--bg-hover); transform: translateX(8px); }
+        .event-item:hover {
+            background: var(--bg-hover);
+            transform: translateX(8px);
+        }
 
         .event-date-box {
-            width: 60px; height: 60px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
             border-radius: 14px;
             display: flex;
@@ -642,15 +811,44 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             font-weight: 700;
         }
 
-        .event-day { font-size: 22px; line-height: 1; }
-        .event-month { font-size: 11px; text-transform: uppercase; }
-        .event-info { flex: 1; }
-        .event-name { font-weight: 600; margin-bottom: 4px; }
-        .event-type { font-size: 12px; color: var(--text-dim); }
+        .event-day {
+            font-size: 22px;
+            line-height: 1;
+        }
 
-        .empty-state { text-align: center; padding: 40px 20px; }
-        .empty-icon { font-size: 48px; margin-bottom: 15px; opacity: 0.5; }
-        .empty-state p { color: var(--text-dim); }
+        .event-month {
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .event-info {
+            flex: 1;
+        }
+
+        .event-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .event-type {
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .empty-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+
+        .empty-state p {
+            color: var(--text-dim);
+        }
 
         /* Pending count badge */
         .pending-count {
@@ -661,10 +859,11 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             font-size: 14px;
             font-weight: 800;
         }
-        
+
         /* Quick action button */
         .quick-action-btn {
-            width: 40px; height: 40px;
+            width: 40px;
+            height: 40px;
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
             border-radius: 10px;
             display: flex;
@@ -674,11 +873,12 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             font-size: 18px;
             transition: all 0.3s;
         }
+
         .quick-action-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(0,255,255,0.4);
+            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
         }
-        
+
         .pending-item .event-date-box {
             background: linear-gradient(135deg, var(--accent-orange), #c77a00) !important;
         }
@@ -701,10 +901,14 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             transition: all 0.3s;
         }
 
-        .leaderboard-item:hover { background: var(--bg-hover); transform: scale(1.02); }
+        .leaderboard-item:hover {
+            background: var(--bg-hover);
+            transform: scale(1.02);
+        }
 
         .rank {
-            width: 36px; height: 36px;
+            width: 36px;
+            height: 36px;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -713,35 +917,91 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             font-size: 14px;
         }
 
-        .rank-1 { background: linear-gradient(135deg, #ffd700, #ffb800); color: #000; }
-        .rank-2 { background: linear-gradient(135deg, #c0c0c0, #a0a0a0); color: #000; }
-        .rank-3 { background: linear-gradient(135deg, #cd7f32, #a0522d); color: #fff; }
-        .rank-other { background: var(--bg-hover); color: var(--text-dim); }
+        .rank-1 {
+            background: linear-gradient(135deg, #ffd700, #ffb800);
+            color: #000;
+        }
 
-        .leaderboard-info { flex: 1; }
-        .leaderboard-name { font-weight: 600; font-size: 14px; }
-        .leaderboard-email { font-size: 12px; color: var(--text-dim); }
-        .leaderboard-count { font-weight: 700; color: var(--accent-cyan); font-size: 18px; }
+        .rank-2 {
+            background: linear-gradient(135deg, #c0c0c0, #a0a0a0);
+            color: #000;
+        }
+
+        .rank-3 {
+            background: linear-gradient(135deg, #cd7f32, #a0522d);
+            color: #fff;
+        }
+
+        .rank-other {
+            background: var(--bg-hover);
+            color: var(--text-dim);
+        }
+
+        .leaderboard-info {
+            flex: 1;
+        }
+
+        .leaderboard-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .leaderboard-email {
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+
+        .leaderboard-count {
+            font-weight: 700;
+            color: var(--accent-cyan);
+            font-size: 18px;
+        }
 
         /* Responsive */
         @media (max-width: 1400px) {
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .charts-row { grid-template-columns: 1fr 1fr; }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .charts-row {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         @media (max-width: 1200px) {
-            .tables-row, .bottom-row { grid-template-columns: 1fr; }
-            .quick-stats, .charts-row { grid-template-columns: 1fr; }
+
+            .tables-row,
+            .bottom-row {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-stats,
+            .charts-row {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
-            .sidebar { display: none; }
-            .main-content { margin-left: 0; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .dashboard-header { flex-direction: column; gap: 20px; }
+            .sidebar {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+                gap: 20px;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="animated-bg">
         <div class="orb orb-1"></div>
@@ -790,7 +1050,7 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
     <main class="main-content">
         <div class="dashboard-header">
             <div class="header-content">
-                <h1>Dashboard</h1>
+                <h1>Dashboard Investisseur</h1>
                 <div class="header-date"><?php echo date('l, d F Y'); ?></div>
             </div>
             <div class="header-actions">
@@ -912,31 +1172,48 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
                     </thead>
                     <tbody>
                         <?php if (empty($recentParticipations)): ?>
-                            <tr><td colspan="4"><div class="empty-state"><div class="empty-icon">📭</div><p>Aucune participation</p></div></td></tr>
-                        <?php else: ?>
-                            <?php foreach($recentParticipations as $p): ?>
                             <tr>
-                                <td>
-                                    <div class="user-cell">
-                                        <div class="user-avatar"><?php echo strtoupper(substr($p['prenom'], 0, 1) . substr($p['nom'], 0, 1)); ?></div>
-                                        <div>
-                                            <div class="user-name"><?php echo htmlspecialchars($p['prenom'] . ' ' . $p['nom']); ?></div>
-                                            <div class="user-email"><?php echo htmlspecialchars($p['email']); ?></div>
-                                        </div>
+                                <td colspan="4">
+                                    <div class="empty-state">
+                                        <div class="empty-icon">📭</div>
+                                        <p>Aucune participation</p>
                                     </div>
                                 </td>
-                                <td><?php echo htmlspecialchars(mb_substr($p['titre'], 0, 20)); ?>...</td>
-                                <td>
-                                    <?php
-                                    $statusClass = 'status-pending';
-                                    $statusIcon = '⏳';
-                                    if ($p['statut'] === 'approuve') { $statusClass = 'status-approved'; $statusIcon = '✓'; }
-                                    elseif ($p['statut'] === 'rejete') { $statusClass = 'status-rejected'; $statusIcon = '✗'; }
-                                    ?>
-                                    <span class="status-badge <?php echo $statusClass; ?>"><?php echo $statusIcon; ?> <?php echo ucfirst(str_replace('_', ' ', $p['statut'])); ?></span>
-                                </td>
-                                <td style="color: var(--text-dim);"><?php echo date('d/m H:i', strtotime($p['date_participation'])); ?></td>
                             </tr>
+                        <?php else: ?>
+                            <?php foreach ($recentParticipations as $p): ?>
+                                <tr>
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar">
+                                                <?php echo strtoupper(substr($p['prenom'], 0, 1) . substr($p['nom'], 0, 1)); ?>
+                                            </div>
+                                            <div>
+                                                <div class="user-name">
+                                                    <?php echo htmlspecialchars($p['prenom'] . ' ' . $p['nom']); ?></div>
+                                                <div class="user-email"><?php echo htmlspecialchars($p['email']); ?></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><?php echo htmlspecialchars(mb_substr($p['titre'], 0, 20)); ?>...</td>
+                                    <td>
+                                        <?php
+                                        $statusClass = 'status-pending';
+                                        $statusIcon = '⏳';
+                                        if ($p['statut'] === 'approuve') {
+                                            $statusClass = 'status-approved';
+                                            $statusIcon = '✓';
+                                        } elseif ($p['statut'] === 'rejete') {
+                                            $statusClass = 'status-rejected';
+                                            $statusIcon = '✗';
+                                        }
+                                        ?>
+                                        <span class="status-badge <?php echo $statusClass; ?>"><?php echo $statusIcon; ?>
+                                            <?php echo ucfirst(str_replace('_', ' ', $p['statut'])); ?></span>
+                                    </td>
+                                    <td style="color: var(--text-dim);">
+                                        <?php echo date('d/m H:i', strtotime($p['date_participation'])); ?></td>
+                                </tr>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </tbody>
@@ -950,23 +1227,46 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
                 </div>
                 <div class="upcoming-events">
                     <?php if (empty($pendingRequests)): ?>
-                        <div class="empty-state"><div class="empty-icon">✅</div><p>Aucune demande en attente</p></div>
-                    <?php else: ?>
-                        <?php foreach($pendingRequests as $req): ?>
-                        <div class="event-item pending-item">
-                            <div class="event-date-box" style="background: linear-gradient(135deg, var(--accent-orange), #c77a00);">
-                                <span class="event-day"><?php echo date('d', strtotime($req['date_participation'])); ?></span>
-                                <span class="event-month"><?php echo date('M', strtotime($req['date_participation'])); ?></span>
-                            </div>
-                            <div class="event-info">
-                                <div class="event-name"><?php echo htmlspecialchars($req['prenom'] . ' ' . $req['nom']); ?></div>
-                                <div class="event-type"><?php echo htmlspecialchars(mb_substr($req['titre'], 0, 20)); ?>... • <?php echo $req['type'] === 'quiz' ? '🎯' : '📅'; ?></div>
-                            </div>
-                            <a href="manage-participations.php?edit=<?php echo $req['id']; ?>" class="quick-action-btn" title="Traiter">⚡</a>
+                        <div class="empty-state">
+                            <div class="empty-icon">✅</div>
+                            <p>Aucune demande en attente</p>
                         </div>
+                    <?php else: ?>
+                        <?php foreach ($pendingRequests as $req): ?>
+                            <div class="event-item pending-item">
+                                <div class="event-date-box"
+                                    style="background: linear-gradient(135deg, var(--accent-orange), #c77a00);">
+                                    <span
+                                        class="event-day"><?php echo date('d', strtotime($req['date_participation'])); ?></span>
+                                    <span
+                                        class="event-month"><?php echo date('M', strtotime($req['date_participation'])); ?></span>
+                                </div>
+                                <div class="event-info">
+                                    <div class="event-name"><?php echo htmlspecialchars($req['prenom'] . ' ' . $req['nom']); ?>
+                                    </div>
+                                    <div class="event-type"><?php echo htmlspecialchars(mb_substr($req['titre'], 0, 20)); ?>...
+                                        • <?php echo $req['type'] === 'quiz' ? '🎯' : '📅'; ?></div>
+                                </div>
+                                <a href="manage-participations.php?edit=<?php echo $req['id']; ?>" class="quick-action-btn"
+                                    title="Traiter">⚡</a>
+                            </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <div class="chart-card" style="grid-column: span 3; max-width: 100%;">
+                <div class="chart-header">
+                    <h3 class="chart-title">🗺️ Carte des Événements</h3>
+                    <div class="map-legend">
+                        <span class="legend-item"><span class="legend-dot normal"></span> Événement</span>
+                        <span class="legend-item"><span class="legend-dot quiz"></span> Quiz</span>
+                    </div>
+                </div>
+                <div id="eventsMap" style="height: 400px; border-radius: 12px; overflow: hidden;"></div>
             </div>
         </div>
 
@@ -976,19 +1276,23 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
                     <h3 class="table-title">🏆 Top Participants</h3>
                 </div>
                 <?php if (empty($topParticipants)): ?>
-                    <div class="empty-state"><div class="empty-icon">🏆</div><p>Aucun participant</p></div>
-                <?php else: ?>
-                    <?php foreach($topParticipants as $index => $participant): ?>
-                    <div class="leaderboard-item">
-                        <div class="rank <?php echo $index < 3 ? 'rank-' . ($index + 1) : 'rank-other'; ?>">
-                            <?php echo $index + 1; ?>
-                        </div>
-                        <div class="leaderboard-info">
-                            <div class="leaderboard-name"><?php echo htmlspecialchars($participant['prenom'] . ' ' . $participant['nom']); ?></div>
-                            <div class="leaderboard-email"><?php echo htmlspecialchars($participant['email']); ?></div>
-                        </div>
-                        <div class="leaderboard-count"><?php echo $participant['total_participations']; ?></div>
+                    <div class="empty-state">
+                        <div class="empty-icon">🏆</div>
+                        <p>Aucun participant</p>
                     </div>
+                <?php else: ?>
+                    <?php foreach ($topParticipants as $index => $participant): ?>
+                        <div class="leaderboard-item">
+                            <div class="rank <?php echo $index < 3 ? 'rank-' . ($index + 1) : 'rank-other'; ?>">
+                                <?php echo $index + 1; ?>
+                            </div>
+                            <div class="leaderboard-info">
+                                <div class="leaderboard-name">
+                                    <?php echo htmlspecialchars($participant['prenom'] . ' ' . $participant['nom']); ?></div>
+                                <div class="leaderboard-email"><?php echo htmlspecialchars($participant['email']); ?></div>
+                            </div>
+                            <div class="leaderboard-count"><?php echo $participant['total_participations']; ?></div>
+                        </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
@@ -998,21 +1302,27 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
                     <h3 class="table-title">🎯 Quiz par Utilisateur</h3>
                 </div>
                 <?php if (empty($quizStats)): ?>
-                    <div class="empty-state"><div class="empty-icon">🎯</div><p>Aucun quiz complété</p></div>
-                <?php else: ?>
-                    <?php foreach($quizStats as $index => $stat): ?>
-                    <div class="leaderboard-item">
-                        <div class="rank <?php echo $index < 3 ? 'rank-' . ($index + 1) : 'rank-other'; ?>" style="<?php echo $index === 0 ? 'background: linear-gradient(135deg, #f59e0b, #d97706);' : ($index === 1 ? 'background: linear-gradient(135deg, #94a3b8, #64748b);' : ($index === 2 ? 'background: linear-gradient(135deg, #cd7c32, #a56529);' : '')); ?>">
-                            <?php echo $index + 1; ?>
-                        </div>
-                        <div class="leaderboard-info">
-                            <div class="leaderboard-name"><?php echo htmlspecialchars($stat['prenom'] . ' ' . $stat['nom']); ?></div>
-                            <div class="leaderboard-email"><?php echo htmlspecialchars($stat['email']); ?></div>
-                        </div>
-                        <div class="leaderboard-count" style="color: var(--accent-cyan);">
-                            <?php echo $stat['total_quiz']; ?> <span style="font-size: 11px; color: var(--text-dim);">quiz complété<?php echo $stat['total_quiz'] > 1 ? 's' : ''; ?></span>
-                        </div>
+                    <div class="empty-state">
+                        <div class="empty-icon">🎯</div>
+                        <p>Aucun quiz complété</p>
                     </div>
+                <?php else: ?>
+                    <?php foreach ($quizStats as $index => $stat): ?>
+                        <div class="leaderboard-item">
+                            <div class="rank <?php echo $index < 3 ? 'rank-' . ($index + 1) : 'rank-other'; ?>"
+                                style="<?php echo $index === 0 ? 'background: linear-gradient(135deg, #f59e0b, #d97706);' : ($index === 1 ? 'background: linear-gradient(135deg, #94a3b8, #64748b);' : ($index === 2 ? 'background: linear-gradient(135deg, #cd7c32, #a56529);' : '')); ?>">
+                                <?php echo $index + 1; ?>
+                            </div>
+                            <div class="leaderboard-info">
+                                <div class="leaderboard-name">
+                                    <?php echo htmlspecialchars($stat['prenom'] . ' ' . $stat['nom']); ?></div>
+                                <div class="leaderboard-email"><?php echo htmlspecialchars($stat['email']); ?></div>
+                            </div>
+                            <div class="leaderboard-count" style="color: var(--accent-cyan);">
+                                <?php echo $stat['total_quiz']; ?> <span style="font-size: 11px; color: var(--text-dim);">quiz
+                                    complété<?php echo $stat['total_quiz'] > 1 ? 's' : ''; ?></span>
+                            </div>
+                        </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
@@ -1038,9 +1348,9 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
                 maintainAspectRatio: false,
                 cutout: '72%',
                 plugins: {
-                    legend: { 
-                        position: 'bottom', 
-                        labels: { color: '#94a3b8', padding: 20, font: { size: 13 }, usePointStyle: true } 
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#94a3b8', padding: 20, font: { size: 13 }, usePointStyle: true }
                     }
                 }
             }
@@ -1105,5 +1415,219 @@ $monthlyGrowth = $lastMonth > 0 ? round((($thisMonth - $lastMonth) / $lastMonth)
             }
         });
     </script>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        /* Map Styles */
+        .map-section {
+            margin-bottom: 30px;
+        }
+        
+        .map-legend {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .legend-dot.normal {
+            background: var(--accent-cyan);
+        }
+        
+        .legend-dot.quiz {
+            background: var(--accent-purple);
+        }
+        
+        #eventsMap {
+            background: var(--bg-tertiary);
+        }
+        
+        .leaflet-popup-content-wrapper {
+            background: #15151f;
+            color: #fff;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .leaflet-popup-content {
+            margin: 15px;
+        }
+        
+        .leaflet-popup-tip {
+            background: #15151f;
+        }
+        
+        .popup-title {
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 8px;
+            color: #00d4ff;
+        }
+        
+        .popup-type {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .popup-type.normal {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(59, 130, 246, 0.2));
+            color: #00d4ff;
+        }
+        
+        .popup-type.quiz {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+            color: #a855f7;
+        }
+        
+        .popup-location {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 5px;
+        }
+        
+        .popup-date {
+            font-size: 11px;
+            color: #64748b;
+        }
+    </style>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Initialize Map
+        document.addEventListener('DOMContentLoaded', function() {
+            // تونس كموقع افتراضي
+            const defaultLat = 36.8065;
+            const defaultLng = 10.1815;
+            
+            const map = L.map('eventsMap', {
+                zoomControl: true,
+                scrollWheelZoom: true
+            }).setView([defaultLat, defaultLng], 11);
+            
+            // Dark theme tiles
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; OpenStreetMap &copy; CARTO',
+                subdomains: 'abcd',
+                maxZoom: 19
+            }).addTo(map);
+            
+            // بيانات الأحداث - مواقع افتراضية في تونس
+            const events = [
+                <?php 
+                $i = 0;
+                foreach ($upcomingEvents as $event): 
+                    $lat = 36.8065 + ($i * 0.02) + (rand(-50, 50) / 1000);
+                    $lng = 10.1815 + ($i * 0.015) + (rand(-50, 50) / 1000);
+                ?>
+                {
+                    id: <?php echo $event['id']; ?>,
+                    titre: "<?php echo addslashes($event['titre']); ?>",
+                    type: "<?php echo $event['type']; ?>",
+                    lieu: "<?php echo isset($event['lieu']) ? addslashes($event['lieu']) : 'Tunis'; ?>",
+                    date_debut: "<?php echo date('d/m/Y H:i', strtotime($event['date_debut'])); ?>",
+                    lat: <?php echo $lat; ?>,
+                    lng: <?php echo $lng; ?>
+                },
+                <?php 
+                $i++;
+                endforeach; 
+                ?>
+            ];
+            
+            // إنشاء العلامات
+            events.forEach(function(event) {
+                const iconColor = event.type === 'quiz' ? '#a855f7' : '#00d4ff';
+                const iconEmoji = event.type === 'quiz' ? '🎯' : '📅';
+                
+                const customIcon = L.divIcon({
+                    className: 'custom-marker',
+                    html: `<div style="
+                        width: 36px;
+                        height: 36px;
+                        background: linear-gradient(135deg, ${iconColor}, ${event.type === 'quiz' ? '#ec4899' : '#3b82f6'});
+                        border-radius: 50% 50% 50% 0;
+                        transform: rotate(-45deg);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+                    "><span style="transform: rotate(45deg); font-size: 16px;">${iconEmoji}</span></div>`,
+                    iconSize: [36, 36],
+                    iconAnchor: [18, 36],
+                    popupAnchor: [0, -36]
+                });
+                
+                const marker = L.marker([event.lat, event.lng], { icon: customIcon }).addTo(map);
+                
+                const popupContent = `
+                    <div class="popup-title">${event.titre}</div>
+                    <span class="popup-type ${event.type}">${event.type === 'quiz' ? '🎯 Quiz' : '📅 Événement'}</span>
+                    <div class="popup-location">📍 ${event.lieu}</div>
+                    <div class="popup-date">🕐 ${event.date_debut}</div>
+                `;
+                
+                marker.bindPopup(popupContent);
+            });
+            
+            // إذا لم توجد أحداث، أضف علامات افتراضية
+            if (events.length === 0) {
+                const defaultEvents = [
+                    { titre: 'مركز المؤتمرات', type: 'normal', lat: 36.8065, lng: 10.1815 },
+                    { titre: 'الجامعة التقنية', type: 'quiz', lat: 36.8225, lng: 10.1656 },
+                    { titre: 'مركز الابتكار', type: 'normal', lat: 36.7925, lng: 10.1956 }
+                ];
+                
+                defaultEvents.forEach(function(event) {
+                    const iconColor = event.type === 'quiz' ? '#a855f7' : '#00d4ff';
+                    const iconEmoji = event.type === 'quiz' ? '🎯' : '📅';
+                    
+                    const customIcon = L.divIcon({
+                        className: 'custom-marker',
+                        html: `<div style="
+                            width: 36px;
+                            height: 36px;
+                            background: linear-gradient(135deg, ${iconColor}, ${event.type === 'quiz' ? '#ec4899' : '#3b82f6'});
+                            border-radius: 50% 50% 50% 0;
+                            transform: rotate(-45deg);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+                        "><span style="transform: rotate(45deg); font-size: 16px;">${iconEmoji}</span></div>`,
+                        iconSize: [36, 36],
+                        iconAnchor: [18, 36],
+                        popupAnchor: [0, -36]
+                    });
+                    
+                    L.marker([event.lat, event.lng], { icon: customIcon }).addTo(map)
+                        .bindPopup(`<div class="popup-title">${event.titre}</div><span class="popup-type ${event.type}">${event.type === 'quiz' ? '🎯 Quiz' : '📅 Événement'}</span>`);
+                });
+            }
+        });
+    </script>
+
+    <!-- Nova AI Chatbot -->
+    <script src="../../assets/js/chatbot.js"></script>
 </body>
+
 </html>

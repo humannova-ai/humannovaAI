@@ -1,7 +1,6 @@
 <?php
 /**
  * Configuration Email avec Brevo API
- *
  * Pour l'envoi d'emails transactionnels
  */
 

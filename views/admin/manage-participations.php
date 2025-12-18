@@ -766,5 +766,8 @@ function isImage($filename) {
             }
         });
     </script>
+
+    <!-- Nova AI Chatbot -->
+    <script src="../../assets/js/chatbot.js"></script>
 </body>
 </html>
