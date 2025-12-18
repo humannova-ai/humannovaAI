@@ -1,18 +1,12 @@
-# Main .htaccess for root
+# Activer le module de réécriture
 RewriteEngine On
-RewriteBase /nour/
 
-# Redirect root to blog
-RewriteRule ^$ blog/index.php [L]
-RewriteRule ^index\.php$ blog/index.php [L]
+# Définir le répertoire de base
+RewriteBase /utilisateur/
 
-# Allow direct serving of public assets (images, css, js) without rewriting
-RewriteRule ^public/ - [L]
-
-# Admin routes
-RewriteRule ^admin/?(.*)$ blog_admin/index.php?$1 [L,QSA]
-
-# All other routes go to blog
+# Règles pour les fichiers et dossiers existants
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ blog/index.php?url=$1 [L,QSA]
+
+# Rediriger toutes les requêtes vers index.php
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
