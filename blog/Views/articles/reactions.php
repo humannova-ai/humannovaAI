@@ -19,7 +19,7 @@
 // Fonctions pour les réactions
 async function loadReactions(articleId) {
     try {
-        const response = await fetch(window.location.origin + (window.SITE_BASE || '') + `/blog/index.php?controller=reaction&action=handle&article_id=${articleId}`);
+        const response = await fetch(`index.php?controller=reaction&action=handle&article_id=${articleId}`);
         const data = await response.json();
         
         if (data.success) {
@@ -71,7 +71,7 @@ async function reactToArticle(articleId, emoji) {
         formData.append('article_id', articleId);
         formData.append('emoji', emoji);
         
-        const response = await fetch(window.location.origin + (window.SITE_BASE || '') + '/blog/index.php?controller=reaction&action=handle', {
+        const response = await fetch('index.php?controller=reaction&action=handle', {
             method: 'POST',
             body: formData
         });

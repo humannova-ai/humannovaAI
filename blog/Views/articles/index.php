@@ -408,23 +408,11 @@
     </style>
 </head>
 <body>
-    <?php
-    // Include shared navbar if available; some setups inline the navbar at the top-level
-    if (file_exists(ROOT_PATH . '/blog/Views/partials/_navbar.php')) {
-        include ROOT_PATH . '/blog/Views/partials/_navbar.php';
-    } elseif (file_exists(__DIR__ . '/_navbar.php')) {
-        include __DIR__ . '/_navbar.php';
-    }
-    ?>
     <div class="prism-container">
         <!-- Header -->
         <div class="page-header">
             <h1>Gestion des Articles</h1>
-            <?php if (defined('USE_ADMIN_VIEW') && USE_ADMIN_VIEW): ?>
-            <a href="index.php?section=posts&action=create" class="create-btn">
-            <?php else: ?>
             <a href="index.php?controller=article&action=create" class="create-btn">
-            <?php endif; ?>
                 Créer un Nouvel Article
             </a>
         </div>
@@ -448,27 +436,15 @@
                         <td class="date-cell"><?= $a['date_creation'] ?></td>
                         <td>
                             <div class="actions-container">
-                                <?php if (defined('USE_ADMIN_VIEW') && USE_ADMIN_VIEW): ?>
-                                <a href="index.php?section=posts&action=show&id=<?= $a['id'] ?>" class="action-btn view-btn">
-                                <?php else: ?>
                                 <a href="index.php?controller=article&action=show&id=<?= $a['id'] ?>" class="action-btn view-btn">
-                                <?php endif; ?>
                                     <span>👁️</span> Voir
                                 </a>
                                 <span class="separator">|</span>
-                                <?php if (defined('USE_ADMIN_VIEW') && USE_ADMIN_VIEW): ?>
-                                <a href="index.php?section=posts&action=edit&id=<?= $a['id'] ?>" class="action-btn edit-btn">
-                                <?php else: ?>
                                 <a href="index.php?controller=article&action=edit&id=<?= $a['id'] ?>" class="action-btn edit-btn">
-                                <?php endif; ?>
                                     <span>✏️</span> Éditer
                                 </a>
                                 <span class="separator">|</span>
-                                <?php if (defined('USE_ADMIN_VIEW') && USE_ADMIN_VIEW): ?>
-                                <a href="index.php?section=posts&action=delete&id=<?= $a['id'] ?>" 
-                                <?php else: ?>
                                 <a href="index.php?controller=article&action=delete&id=<?= $a['id'] ?>" 
-                                <?php endif; ?>
                                    class="action-btn delete-btn" 
                                    onclick="return confirm('Supprimer cet article ?')">
                                     <span>🗑️</span> Supprimer

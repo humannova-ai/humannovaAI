@@ -1,24 +1,15 @@
 <?php
-require_once ROOT_PATH . '/shared/Models/Interaction.php';
+require_once "Models/Interaction.php";
 
 class InteractionController {
     private $model;
 
     public function __construct() {
+        // DÉMARRER LA SESSION DANS LE CONSTRUCTEUR
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
         $this->model = new Interaction();
-    }
-
-    public function handle() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['article_id'])) {
-            $this->create();
-        } elseif (isset($_GET['action']) && $_GET['action'] === 'delete') {
-            $this->delete();
-        } elseif (isset($_GET['action']) && $_GET['action'] === 'getStats') {
-            $this->getStats();
-        }
     }
 
     public function create() {
@@ -54,6 +45,7 @@ class InteractionController {
             }
 
             if (!empty($errors)) {
+                // Stocker les erreurs en session pour les afficher dans la vue
                 $_SESSION['errors'] = $errors;
                 $_SESSION['form_data'] = ['article_id' => $article_id, 'auteur' => $auteur, 'email' => $email, 'message' => $message, 'type' => $type];
                 header("Location: index.php?controller=article&action=show&id=" . $article_id);
@@ -74,8 +66,9 @@ class InteractionController {
         }
     }
 
-    public function delete() {
-        $id = $_GET['id'] ?? null;
+    public function delete($id = null) {
+        // Récupérer les paramètres depuis GET si non passés en argument
+        $id = $id ?? ($_GET['id'] ?? null);
         $article_id = $_GET['article_id'] ?? null;
 
         if (!$id || !$article_id) {
@@ -87,31 +80,5 @@ class InteractionController {
         header("Location: index.php?controller=article&action=show&id=" . $article_id);
         exit;
     }
-    
-    public function getStats() {
-        header('Content-Type: application/json');
-        
-        $article_id = isset($_GET['article_id']) ? (int)$_GET['article_id'] : null;
-        
-        if (!$article_id) {
-            echo json_encode(['success' => false, 'error' => 'Article ID required']);
-            exit;
-        }
-        
-        $interactions = $this->model->readByArticle($article_id);
-        $likes = array_filter($interactions, function($item) {
-            return $item['type'] === 'like';
-        });
-        
-        echo json_encode([
-            'success' => true,
-            'stats' => [
-                'total' => count($likes),
-                'emojis' => array_map(function($item) {
-                    return $item['message'];
-                }, $likes)
-            ]
-        ]);
-        exit;
-    }
 }
+?>

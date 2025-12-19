@@ -1,0 +1,558 @@
+[05-Dec-2025 07:41:51 Europe/Berlin] Tentative de connexion - Username: admin
+[05-Dec-2025 07:41:51 Europe/Berlin] Mot de passe incorrect pour: admin
+[05-Dec-2025 07:41:51 Europe/Berlin] Échec de connexion
+[05-Dec-2025 09:10:13 Europe/Berlin] Tentative de connexion - Username: admin
+[05-Dec-2025 09:10:14 Europe/Berlin] Mot de passe incorrect pour: admin
+[05-Dec-2025 09:10:14 Europe/Berlin] Échec de connexion
+[05-Dec-2025 09:11:01 Europe/Berlin] Tentative de connexion - Username: admin
+[05-Dec-2025 09:11:01 Europe/Berlin] Mot de passe incorrect pour: admin
+[05-Dec-2025 09:11:01 Europe/Berlin] Échec de connexion
+[05-Dec-2025 09:14:38 Europe/Berlin] Tentative de connexion - Username: admin
+[05-Dec-2025 09:14:38 Europe/Berlin] Mot de passe incorrect pour: admin
+[05-Dec-2025 09:14:38 Europe/Berlin] Échec de connexion
+[05-Dec-2025 09:14:47 Europe/Berlin] Tentative de connexion - Username: admin
+[05-Dec-2025 09:14:47 Europe/Berlin] Mot de passe incorrect pour: admin
+[05-Dec-2025 09:14:47 Europe/Berlin] Échec de connexion
+[05-Dec-2025 09:20:06 Europe/Berlin] Tentative de connexion - Username: admin
+[05-Dec-2025 09:20:06 Europe/Berlin] Mot de passe incorrect pour: admin
+[05-Dec-2025 09:20:06 Europe/Berlin] Échec de connexion
+[05-Dec-2025 09:48:58 Europe/Berlin] Tentative de connexion - Username: admin
+[05-Dec-2025 09:48:58 Europe/Berlin] Authentification réussie pour: admin
+[05-Dec-2025 09:48:58 Europe/Berlin] Connexion réussie, redirection vers dashboard
+[05-Dec-2025 09:50:46 Europe/Berlin] Tentative de connexion - Username: admin
+[05-Dec-2025 09:50:46 Europe/Berlin] Authentification réussie pour: admin
+[05-Dec-2025 09:50:46 Europe/Berlin] Connexion réussie, redirection vers dashboard
+[05-Dec-2025 09:55:36 Europe/Berlin] Tentative de connexion - Username: admin
+[05-Dec-2025 09:55:36 Europe/Berlin] Authentification réussie pour: admin
+[05-Dec-2025 09:55:36 Europe/Berlin] Connexion réussie, redirection vers dashboard
+[05-Dec-2025 10:33:11 Europe/Berlin] Tentative de connexion - Username: admin
+[05-Dec-2025 10:33:11 Europe/Berlin] Authentification réussie pour: admin
+[05-Dec-2025 10:33:11 Europe/Berlin] Connexion réussie, redirection vers dashboard
+[05-Dec-2025 10:34:15 Europe/Berlin] Tentative de connexion - Username: admin
+[05-Dec-2025 10:34:15 Europe/Berlin] Authentification réussie pour: admin
+[05-Dec-2025 10:34:15 Europe/Berlin] Connexion réussie, redirection vers dashboard
+[05-Dec-2025 10:38:05 Europe/Berlin] Tentative de connexion - Username: admin
+[05-Dec-2025 10:38:05 Europe/Berlin] Authentification réussie pour: admin
+[05-Dec-2025 10:38:05 Europe/Berlin] Connexion réussie, redirection vers dashboard
+[05-Dec-2025 11:01:12 Europe/Berlin] Tentative de connexion - Username: admin
+[05-Dec-2025 11:01:12 Europe/Berlin] Authentification réussie pour: admin
+[05-Dec-2025 11:01:12 Europe/Berlin] Connexion réussie, redirection vers dashboard
+[08-Dec-2025 15:06:50 Europe/Berlin] Tentative de connexion - Username: xfh
+[08-Dec-2025 15:06:50 Europe/Berlin] Admin non trouvé: xfh
+[08-Dec-2025 15:06:50 Europe/Berlin] Échec de connexion
+[11-Dec-2025 22:31:36 Europe/Berlin] Tentative de connexion - Username: admin
+[11-Dec-2025 22:31:36 Europe/Berlin] Mot de passe incorrect pour: admin
+[11-Dec-2025 22:31:36 Europe/Berlin] Échec de connexion
+[11-Dec-2025 22:32:58 Europe/Berlin] Tentative de connexion - Username: admin
+[11-Dec-2025 22:32:58 Europe/Berlin] Authentification réussie pour: admin
+[11-Dec-2025 22:32:58 Europe/Berlin] Connexion réussie, redirection vers dashboard
+[12-Dec-2025 06:29:41 Europe/Berlin] Tentative de connexion - Username: 
+[12-Dec-2025 06:29:41 Europe/Berlin] Admin non trouvé: 
+[12-Dec-2025 06:29:41 Europe/Berlin] Échec de connexion
+[12-Dec-2025 07:14:28 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\blog\Controllers\AdminController.php on line 9
+[12-Dec-2025 07:15:44 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\blog\Controllers\AdminController.php on line 9
+[12-Dec-2025 09:11:10 Europe/Berlin] Tentative de connexion - Username: admin
+[12-Dec-2025 09:11:10 Europe/Berlin] Connexion réussie, redirection vers dashboard
+[12-Dec-2025 09:37:50 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method Article::readAll() in C:\xampp\htdocs\blog\index.php:375
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\blog\index.php on line 375
+[12-Dec-2025 09:40:11 Europe/Berlin] PHP Fatal error:  Cannot declare class Article, because the name is already in use in C:\xampp\htdocs\blog\Models\article.php on line 25
+[12-Dec-2025 09:44:51 Europe/Berlin] Erreur incrementViews: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'views' in 'field list'
+[12-Dec-2025 09:44:51 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 13
+[12-Dec-2025 09:44:51 Europe/Berlin] Reaction get error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'blog.reactions' doesn't exist
+[12-Dec-2025 09:44:51 Europe/Berlin] Get user reaction error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'blog.reactions' doesn't exist
+[12-Dec-2025 09:44:51 Europe/Berlin] Get stats error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'blog.reactions' doesn't exist
+[12-Dec-2025 10:05:34 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 13
+[12-Dec-2025 10:17:03 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 13
+[12-Dec-2025 10:25:27 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 13
+[12-Dec-2025 10:28:09 Europe/Berlin] Tentative de connexion - Username: admin
+[12-Dec-2025 10:28:09 Europe/Berlin] Connexion réussie, redirection vers dashboard
+[12-Dec-2025 10:33:23 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 13
+[12-Dec-2025 10:37:29 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 13
+[12-Dec-2025 10:37:33 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 13
+[12-Dec-2025 10:37:40 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 13
+[12-Dec-2025 10:37:57 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 13
+[12-Dec-2025 10:38:36 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 13
+[12-Dec-2025 10:39:57 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 13
+[12-Dec-2025 10:40:05 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 13
+[12-Dec-2025 10:41:15 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 13
+[12-Dec-2025 10:43:25 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 13
+[12-Dec-2025 10:45:02 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 10:45:07 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 10:45:07 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 10:45:09 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 10:45:09 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 10:45:11 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 10:45:11 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 10:45:22 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 10:45:22 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 10:50:23 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 10:50:31 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 10:50:31 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 10:53:04 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 10:57:59 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:02:31 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:03:05 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:03:05 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:03:08 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:03:08 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:03:18 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:03:18 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:03:22 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:03:22 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:03:24 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:03:24 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:03:25 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:03:25 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:03:26 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:03:26 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:03:28 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:03:28 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:03:29 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:03:29 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:03:31 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:03:31 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:03:32 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:03:32 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:03:34 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:03:34 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:03:35 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:03:35 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:03:37 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:03:37 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:04:31 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:04:31 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:04:33 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:04:33 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:04:34 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:04:34 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:10:17 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:12:04 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:12:04 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:26:20 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:30:12 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:41:02 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:41:12 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:41:13 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:44:45 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:47:46 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:48:01 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 11:48:07 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:48:09 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:48:10 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 11:48:12 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 12:00:56 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 12:01:00 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 12:01:01 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 12:01:38 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[12-Dec-2025 12:01:43 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 12:01:44 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[12-Dec-2025 12:01:45 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[13-Dec-2025 11:52:27 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 11:52:37 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[13-Dec-2025 11:54:20 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[13-Dec-2025 11:54:36 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[13-Dec-2025 11:54:38 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[13-Dec-2025 12:17:29 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 12:21:26 Europe/Berlin] PHP Warning:  Undefined variable $article_url in C:\xampp\htdocs\blog\index.php on line 1105
+[13-Dec-2025 12:21:26 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\blog\index.php on line 1105
+[13-Dec-2025 12:21:26 Europe/Berlin] PHP Warning:  Undefined variable $encoded_url in C:\xampp\htdocs\blog\index.php on line 1117
+[13-Dec-2025 12:21:26 Europe/Berlin] PHP Warning:  Undefined variable $encoded_title in C:\xampp\htdocs\blog\index.php on line 1117
+[13-Dec-2025 12:21:26 Europe/Berlin] PHP Warning:  Undefined variable $encoded_url in C:\xampp\htdocs\blog\index.php on line 1142
+[13-Dec-2025 12:21:26 Europe/Berlin] PHP Warning:  Undefined variable $encoded_title in C:\xampp\htdocs\blog\index.php on line 1142
+[13-Dec-2025 12:21:26 Europe/Berlin] PHP Warning:  Undefined variable $encoded_url in C:\xampp\htdocs\blog\index.php on line 1167
+[13-Dec-2025 12:21:26 Europe/Berlin] PHP Warning:  Undefined variable $article_url in C:\xampp\htdocs\blog\index.php on line 1192
+[13-Dec-2025 12:21:26 Europe/Berlin] PHP Deprecated:  addslashes(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\blog\index.php on line 1192
+[13-Dec-2025 12:21:27 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Warning:  Undefined variable $article_url in C:\xampp\htdocs\blog\index.php on line 1105
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\blog\index.php on line 1105
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Warning:  Undefined variable $encoded_url in C:\xampp\htdocs\blog\index.php on line 1117
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Warning:  Undefined variable $encoded_title in C:\xampp\htdocs\blog\index.php on line 1117
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Warning:  Undefined variable $encoded_url in C:\xampp\htdocs\blog\index.php on line 1142
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Warning:  Undefined variable $encoded_title in C:\xampp\htdocs\blog\index.php on line 1142
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Warning:  Undefined variable $encoded_url in C:\xampp\htdocs\blog\index.php on line 1167
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Warning:  Undefined variable $article_url in C:\xampp\htdocs\blog\index.php on line 1192
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Deprecated:  addslashes(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\blog\index.php on line 1192
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Warning:  Undefined variable $article_url in C:\xampp\htdocs\blog\index.php on line 1316
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\blog\index.php on line 1316
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Warning:  Undefined variable $article_url in C:\xampp\htdocs\blog\index.php on line 1318
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Deprecated:  addslashes(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\blog\index.php on line 1318
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Warning:  Undefined variable $encoded_url in C:\xampp\htdocs\blog\index.php on line 1328
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Warning:  Undefined variable $encoded_url in C:\xampp\htdocs\blog\index.php on line 1337
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Warning:  Undefined variable $twitter_text in C:\xampp\htdocs\blog\index.php on line 1337
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Warning:  Undefined variable $encoded_url in C:\xampp\htdocs\blog\index.php on line 1346
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Warning:  Undefined variable $encoded_title in C:\xampp\htdocs\blog\index.php on line 1355
+[13-Dec-2025 12:29:44 Europe/Berlin] PHP Warning:  Undefined variable $encoded_url in C:\xampp\htdocs\blog\index.php on line 1355
+[13-Dec-2025 12:29:45 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:05:04 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:05:12 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:05:35 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:05:43 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[13-Dec-2025 13:05:43 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:05:45 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[13-Dec-2025 13:05:45 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:05:46 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[13-Dec-2025 13:05:46 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:05:47 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[13-Dec-2025 13:05:47 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:05:48 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[13-Dec-2025 13:05:48 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:05:49 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[13-Dec-2025 13:05:49 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:05:52 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[13-Dec-2025 13:05:52 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:05:53 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[13-Dec-2025 13:05:53 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[13-Dec-2025 13:05:53 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:05:53 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:05:54 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[13-Dec-2025 13:05:54 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:08:52 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\blog\Controllers/../config/database.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 12
+[13-Dec-2025 13:08:52 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\blog\Controllers/../config/database.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\blog\Controllers\ReactionController.php:12
+Stack trace:
+#0 C:\xampp\htdocs\blog\index.php(28): ReactionController->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 12
+[13-Dec-2025 13:08:58 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\blog\Controllers/../config/database.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 12
+[13-Dec-2025 13:08:58 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\blog\Controllers/../config/database.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\blog\Controllers\ReactionController.php:12
+Stack trace:
+#0 C:\xampp\htdocs\blog\index.php(28): ReactionController->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 12
+[13-Dec-2025 13:09:00 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\blog\Controllers/../config/database.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 12
+[13-Dec-2025 13:09:00 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\blog\Controllers/../config/database.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\blog\Controllers\ReactionController.php:12
+Stack trace:
+#0 C:\xampp\htdocs\blog\index.php(28): ReactionController->__construct()
+#1 {main}
+  thrown in C:\xampp\htdocs\blog\Controllers\ReactionController.php on line 12
+[13-Dec-2025 13:09:13 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:09:18 Europe/Berlin] ReactionController: POST - controller=reaction&action=handle
+[13-Dec-2025 13:09:18 Europe/Berlin] ReactionController: GET - controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:56:15 Europe/Berlin] === URL Partage Debug ===
+[13-Dec-2025 13:56:15 Europe/Berlin] Protocol: http://
+[13-Dec-2025 13:56:15 Europe/Berlin] Host: localhost
+[13-Dec-2025 13:56:15 Europe/Berlin] Script Dir: /blog
+[13-Dec-2025 13:56:15 Europe/Berlin] Article URL: http://localhost/blog/index.php?action=show&id=2
+[13-Dec-2025 13:56:15 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 13:56:15 Europe/Berlin] Method: GET
+[13-Dec-2025 13:56:15 Europe/Berlin] Query: controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:56:15 Europe/Berlin] POST data: Array
+(
+)
+
+[13-Dec-2025 13:56:15 Europe/Berlin] GET Reactions - Article ID: 2
+[13-Dec-2025 13:56:15 Europe/Berlin] User ID: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 13:56:15 Europe/Berlin] Reactions found: 1
+[13-Dec-2025 13:56:15 Europe/Berlin] User reaction: 😮
+[13-Dec-2025 13:56:22 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 13:56:22 Europe/Berlin] Method: POST
+[13-Dec-2025 13:56:22 Europe/Berlin] Query: controller=reaction&action=handle
+[13-Dec-2025 13:56:22 Europe/Berlin] POST data: Array
+(
+    [article_id] => 2
+    [emoji] => 😄
+)
+
+[13-Dec-2025 13:56:22 Europe/Berlin] ADD Reaction - Article ID: 2, Emoji: 😄
+[13-Dec-2025 13:56:22 Europe/Berlin] Adding reaction for user: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 13:56:22 Europe/Berlin] Reaction add result: SUCCESS
+[13-Dec-2025 13:56:22 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 13:56:22 Europe/Berlin] Method: GET
+[13-Dec-2025 13:56:22 Europe/Berlin] Query: controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:56:22 Europe/Berlin] POST data: Array
+(
+)
+
+[13-Dec-2025 13:56:22 Europe/Berlin] GET Reactions - Article ID: 2
+[13-Dec-2025 13:56:22 Europe/Berlin] User ID: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 13:56:22 Europe/Berlin] Reactions found: 1
+[13-Dec-2025 13:56:22 Europe/Berlin] User reaction: 😄
+[13-Dec-2025 13:56:24 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 13:56:24 Europe/Berlin] Method: POST
+[13-Dec-2025 13:56:24 Europe/Berlin] Query: controller=reaction&action=handle
+[13-Dec-2025 13:56:24 Europe/Berlin] POST data: Array
+(
+    [article_id] => 2
+    [emoji] => 🔥
+)
+
+[13-Dec-2025 13:56:24 Europe/Berlin] ADD Reaction - Article ID: 2, Emoji: 🔥
+[13-Dec-2025 13:56:24 Europe/Berlin] Adding reaction for user: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 13:56:24 Europe/Berlin] Reaction add result: SUCCESS
+[13-Dec-2025 13:56:24 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 13:56:24 Europe/Berlin] Method: GET
+[13-Dec-2025 13:56:24 Europe/Berlin] Query: controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:56:24 Europe/Berlin] POST data: Array
+(
+)
+
+[13-Dec-2025 13:56:24 Europe/Berlin] GET Reactions - Article ID: 2
+[13-Dec-2025 13:56:24 Europe/Berlin] User ID: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 13:56:24 Europe/Berlin] Reactions found: 1
+[13-Dec-2025 13:56:24 Europe/Berlin] User reaction: 🔥
+[13-Dec-2025 13:56:25 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 13:56:25 Europe/Berlin] Method: POST
+[13-Dec-2025 13:56:25 Europe/Berlin] Query: controller=reaction&action=handle
+[13-Dec-2025 13:56:25 Europe/Berlin] POST data: Array
+(
+    [article_id] => 2
+    [emoji] => 👏
+)
+
+[13-Dec-2025 13:56:25 Europe/Berlin] ADD Reaction - Article ID: 2, Emoji: 👏
+[13-Dec-2025 13:56:25 Europe/Berlin] Adding reaction for user: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 13:56:25 Europe/Berlin] Reaction add result: SUCCESS
+[13-Dec-2025 13:56:25 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 13:56:25 Europe/Berlin] Method: GET
+[13-Dec-2025 13:56:25 Europe/Berlin] Query: controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:56:25 Europe/Berlin] POST data: Array
+(
+)
+
+[13-Dec-2025 13:56:25 Europe/Berlin] GET Reactions - Article ID: 2
+[13-Dec-2025 13:56:25 Europe/Berlin] User ID: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 13:56:25 Europe/Berlin] Reactions found: 1
+[13-Dec-2025 13:56:25 Europe/Berlin] User reaction: 👏
+[13-Dec-2025 13:56:27 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 13:56:27 Europe/Berlin] Method: POST
+[13-Dec-2025 13:56:27 Europe/Berlin] Query: controller=reaction&action=handle
+[13-Dec-2025 13:56:27 Europe/Berlin] POST data: Array
+(
+    [article_id] => 2
+    [emoji] => ❤️
+)
+
+[13-Dec-2025 13:56:27 Europe/Berlin] ADD Reaction - Article ID: 2, Emoji: ❤️
+[13-Dec-2025 13:56:27 Europe/Berlin] Adding reaction for user: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 13:56:27 Europe/Berlin] Reaction add result: SUCCESS
+[13-Dec-2025 13:56:27 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 13:56:27 Europe/Berlin] Method: GET
+[13-Dec-2025 13:56:27 Europe/Berlin] Query: controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:56:27 Europe/Berlin] POST data: Array
+(
+)
+
+[13-Dec-2025 13:56:27 Europe/Berlin] GET Reactions - Article ID: 2
+[13-Dec-2025 13:56:27 Europe/Berlin] User ID: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 13:56:27 Europe/Berlin] Reactions found: 2
+[13-Dec-2025 13:56:27 Europe/Berlin] User reaction: ❤️
+[13-Dec-2025 13:56:35 Europe/Berlin] === URL Partage Debug ===
+[13-Dec-2025 13:56:35 Europe/Berlin] Protocol: http://
+[13-Dec-2025 13:56:35 Europe/Berlin] Host: localhost
+[13-Dec-2025 13:56:35 Europe/Berlin] Script Dir: /blog
+[13-Dec-2025 13:56:35 Europe/Berlin] Article URL: http://localhost/blog/index.php?action=show&id=2
+[13-Dec-2025 13:56:36 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 13:56:36 Europe/Berlin] Method: GET
+[13-Dec-2025 13:56:36 Europe/Berlin] Query: controller=reaction&action=handle&article_id=2
+[13-Dec-2025 13:56:36 Europe/Berlin] POST data: Array
+(
+)
+
+[13-Dec-2025 13:56:36 Europe/Berlin] GET Reactions - Article ID: 2
+[13-Dec-2025 13:56:36 Europe/Berlin] User ID: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 13:56:36 Europe/Berlin] Reactions found: 2
+[13-Dec-2025 13:56:36 Europe/Berlin] User reaction: ❤️
+[13-Dec-2025 14:01:14 Europe/Berlin] === URL Partage Debug ===
+[13-Dec-2025 14:01:14 Europe/Berlin] Protocol: http://
+[13-Dec-2025 14:01:14 Europe/Berlin] Host: localhost
+[13-Dec-2025 14:01:14 Europe/Berlin] Script Dir: /blog
+[13-Dec-2025 14:01:14 Europe/Berlin] Article URL: http://localhost/blog/index.php?action=show&id=2
+[13-Dec-2025 14:01:15 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 14:01:15 Europe/Berlin] Method: GET
+[13-Dec-2025 14:01:15 Europe/Berlin] Query: controller=reaction&action=handle&article_id=2
+[13-Dec-2025 14:01:15 Europe/Berlin] POST data: Array
+(
+)
+
+[13-Dec-2025 14:01:15 Europe/Berlin] GET Reactions - Article ID: 2
+[13-Dec-2025 14:01:15 Europe/Berlin] User ID: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 14:01:15 Europe/Berlin] Reactions found: 2
+[13-Dec-2025 14:01:15 Europe/Berlin] User reaction: ❤️
+[13-Dec-2025 14:01:23 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 14:01:23 Europe/Berlin] Method: POST
+[13-Dec-2025 14:01:23 Europe/Berlin] Query: controller=reaction&action=handle
+[13-Dec-2025 14:01:23 Europe/Berlin] POST data: Array
+(
+    [article_id] => 2
+    [emoji] => 😄
+)
+
+[13-Dec-2025 14:01:23 Europe/Berlin] ADD Reaction - Article ID: 2, Emoji: 😄
+[13-Dec-2025 14:01:23 Europe/Berlin] Adding reaction for user: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 14:01:23 Europe/Berlin] Reaction add result: SUCCESS
+[13-Dec-2025 14:01:23 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 14:01:23 Europe/Berlin] Method: GET
+[13-Dec-2025 14:01:23 Europe/Berlin] Query: controller=reaction&action=handle&article_id=2
+[13-Dec-2025 14:01:23 Europe/Berlin] POST data: Array
+(
+)
+
+[13-Dec-2025 14:01:23 Europe/Berlin] GET Reactions - Article ID: 2
+[13-Dec-2025 14:01:23 Europe/Berlin] User ID: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 14:01:23 Europe/Berlin] Reactions found: 1
+[13-Dec-2025 14:01:23 Europe/Berlin] User reaction: 😄
+[13-Dec-2025 14:05:34 Europe/Berlin] Tentative de connexion - Username: admin
+[13-Dec-2025 14:05:34 Europe/Berlin] Connexion réussie, redirection vers dashboard
+[13-Dec-2025 14:06:04 Europe/Berlin] === URL Partage Debug ===
+[13-Dec-2025 14:06:04 Europe/Berlin] Protocol: http://
+[13-Dec-2025 14:06:04 Europe/Berlin] Host: localhost
+[13-Dec-2025 14:06:04 Europe/Berlin] Script Dir: /blog
+[13-Dec-2025 14:06:04 Europe/Berlin] Article URL: http://localhost/blog/index.php?action=show&id=2
+[13-Dec-2025 14:06:04 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 14:06:04 Europe/Berlin] Method: GET
+[13-Dec-2025 14:06:04 Europe/Berlin] Query: controller=reaction&action=handle&article_id=2
+[13-Dec-2025 14:06:04 Europe/Berlin] POST data: Array
+(
+)
+
+[13-Dec-2025 14:06:04 Europe/Berlin] GET Reactions - Article ID: 2
+[13-Dec-2025 14:06:04 Europe/Berlin] User ID: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 14:06:04 Europe/Berlin] Reactions found: 1
+[13-Dec-2025 14:06:04 Europe/Berlin] User reaction: 😄
+[13-Dec-2025 14:06:42 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method Article::read() in C:\xampp\htdocs\blog\Controllers\ArticleController.php:42
+Stack trace:
+#0 C:\xampp\htdocs\blog\index.php(62): ArticleController->edit('2')
+#1 {main}
+  thrown in C:\xampp\htdocs\blog\Controllers\ArticleController.php on line 42
+[13-Dec-2025 14:07:46 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method Article::read() in C:\xampp\htdocs\blog\Controllers\ArticleController.php:42
+Stack trace:
+#0 C:\xampp\htdocs\blog\index.php(62): ArticleController->edit('2')
+#1 {main}
+  thrown in C:\xampp\htdocs\blog\Controllers\ArticleController.php on line 42
+[13-Dec-2025 14:07:50 Europe/Berlin] === URL Partage Debug ===
+[13-Dec-2025 14:07:50 Europe/Berlin] Protocol: http://
+[13-Dec-2025 14:07:50 Europe/Berlin] Host: localhost
+[13-Dec-2025 14:07:50 Europe/Berlin] Script Dir: /blog
+[13-Dec-2025 14:07:50 Europe/Berlin] Article URL: http://localhost/blog/index.php?action=show&id=2
+[13-Dec-2025 14:07:50 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 14:07:50 Europe/Berlin] Method: GET
+[13-Dec-2025 14:07:50 Europe/Berlin] Query: controller=reaction&action=handle&article_id=2
+[13-Dec-2025 14:07:50 Europe/Berlin] POST data: Array
+(
+)
+
+[13-Dec-2025 14:07:50 Europe/Berlin] GET Reactions - Article ID: 2
+[13-Dec-2025 14:07:50 Europe/Berlin] User ID: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 14:07:50 Europe/Berlin] Reactions found: 1
+[13-Dec-2025 14:07:50 Europe/Berlin] User reaction: 😄
+[13-Dec-2025 14:08:01 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method Article::read() in C:\xampp\htdocs\blog\Controllers\ArticleController.php:42
+Stack trace:
+#0 C:\xampp\htdocs\blog\index.php(62): ArticleController->edit('2')
+#1 {main}
+  thrown in C:\xampp\htdocs\blog\Controllers\ArticleController.php on line 42
+[13-Dec-2025 14:21:49 Europe/Berlin] === URL Partage Debug ===
+[13-Dec-2025 14:21:49 Europe/Berlin] Protocol: http://
+[13-Dec-2025 14:21:49 Europe/Berlin] Host: localhost
+[13-Dec-2025 14:21:49 Europe/Berlin] Script Dir: /blog
+[13-Dec-2025 14:21:49 Europe/Berlin] Article URL: http://localhost/blog/index.php?action=show&id=2
+[13-Dec-2025 14:21:50 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 14:21:50 Europe/Berlin] Method: GET
+[13-Dec-2025 14:21:50 Europe/Berlin] Query: controller=reaction&action=handle&article_id=2
+[13-Dec-2025 14:21:50 Europe/Berlin] POST data: Array
+(
+)
+
+[13-Dec-2025 14:21:50 Europe/Berlin] GET Reactions - Article ID: 2
+[13-Dec-2025 14:21:50 Europe/Berlin] User ID: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 14:21:50 Europe/Berlin] Reactions found: 1
+[13-Dec-2025 14:21:50 Europe/Berlin] User reaction: 😄
+[13-Dec-2025 14:21:54 Europe/Berlin] === URL Partage Debug ===
+[13-Dec-2025 14:21:54 Europe/Berlin] Protocol: http://
+[13-Dec-2025 14:21:54 Europe/Berlin] Host: localhost
+[13-Dec-2025 14:21:54 Europe/Berlin] Script Dir: /blog
+[13-Dec-2025 14:21:54 Europe/Berlin] Article URL: http://localhost/blog/index.php?action=show&id=2
+[13-Dec-2025 14:21:55 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 14:21:55 Europe/Berlin] Method: GET
+[13-Dec-2025 14:21:55 Europe/Berlin] Query: controller=reaction&action=handle&article_id=2
+[13-Dec-2025 14:21:55 Europe/Berlin] POST data: Array
+(
+)
+
+[13-Dec-2025 14:21:55 Europe/Berlin] GET Reactions - Article ID: 2
+[13-Dec-2025 14:21:55 Europe/Berlin] User ID: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 14:21:55 Europe/Berlin] Reactions found: 1
+[13-Dec-2025 14:21:55 Europe/Berlin] User reaction: 😄
+[13-Dec-2025 14:29:45 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method Article::setTitre() in C:\xampp\htdocs\blog\Controllers\ArticleController.php:31
+Stack trace:
+#0 C:\xampp\htdocs\blog\index.php(59): ArticleController->create()
+#1 {main}
+  thrown in C:\xampp\htdocs\blog\Controllers\ArticleController.php on line 31
+[13-Dec-2025 15:45:02 Europe/Berlin] === URL Partage Debug ===
+[13-Dec-2025 15:45:02 Europe/Berlin] Protocol: http://
+[13-Dec-2025 15:45:02 Europe/Berlin] Host: localhost
+[13-Dec-2025 15:45:02 Europe/Berlin] Script Dir: /blog
+[13-Dec-2025 15:45:02 Europe/Berlin] Article URL: http://localhost/blog/index.php?action=show&id=3
+[13-Dec-2025 15:45:03 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 15:45:03 Europe/Berlin] Method: GET
+[13-Dec-2025 15:45:03 Europe/Berlin] Query: controller=reaction&action=handle&article_id=3
+[13-Dec-2025 15:45:03 Europe/Berlin] POST data: Array
+(
+)
+
+[13-Dec-2025 15:45:03 Europe/Berlin] GET Reactions - Article ID: 3
+[13-Dec-2025 15:45:03 Europe/Berlin] User ID: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 15:45:03 Europe/Berlin] Reactions found: 0
+[13-Dec-2025 15:45:03 Europe/Berlin] User reaction: none
+[13-Dec-2025 15:45:11 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 15:45:11 Europe/Berlin] Method: POST
+[13-Dec-2025 15:45:11 Europe/Berlin] Query: controller=reaction&action=handle
+[13-Dec-2025 15:45:11 Europe/Berlin] POST data: Array
+(
+    [article_id] => 3
+    [emoji] => 👍
+)
+
+[13-Dec-2025 15:45:11 Europe/Berlin] ADD Reaction - Article ID: 3, Emoji: 👍
+[13-Dec-2025 15:45:11 Europe/Berlin] Adding reaction for user: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 15:45:11 Europe/Berlin] Reaction add result: SUCCESS
+[13-Dec-2025 15:45:11 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 15:45:11 Europe/Berlin] Method: GET
+[13-Dec-2025 15:45:11 Europe/Berlin] Query: controller=reaction&action=handle&article_id=3
+[13-Dec-2025 15:45:11 Europe/Berlin] POST data: Array
+(
+)
+
+[13-Dec-2025 15:45:11 Europe/Berlin] GET Reactions - Article ID: 3
+[13-Dec-2025 15:45:11 Europe/Berlin] User ID: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 15:45:11 Europe/Berlin] Reactions found: 1
+[13-Dec-2025 15:45:11 Europe/Berlin] User reaction: 👍
+[13-Dec-2025 17:43:26 Europe/Berlin] === URL Partage Debug ===
+[13-Dec-2025 17:43:26 Europe/Berlin] Protocol: http://
+[13-Dec-2025 17:43:26 Europe/Berlin] Host: localhost
+[13-Dec-2025 17:43:26 Europe/Berlin] Script Dir: /blog
+[13-Dec-2025 17:43:26 Europe/Berlin] Article URL: http://localhost/blog/index.php?action=show&id=3
+[13-Dec-2025 17:43:26 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 17:43:26 Europe/Berlin] Method: GET
+[13-Dec-2025 17:43:26 Europe/Berlin] Query: controller=reaction&action=handle&article_id=3
+[13-Dec-2025 17:43:26 Europe/Berlin] POST data: Array
+(
+)
+
+[13-Dec-2025 17:43:26 Europe/Berlin] GET Reactions - Article ID: 3
+[13-Dec-2025 17:43:26 Europe/Berlin] User ID: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 17:43:26 Europe/Berlin] Reactions found: 1
+[13-Dec-2025 17:43:26 Europe/Berlin] User reaction: 👍
+[13-Dec-2025 17:43:32 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 17:43:32 Europe/Berlin] Method: POST
+[13-Dec-2025 17:43:32 Europe/Berlin] Query: controller=reaction&action=handle
+[13-Dec-2025 17:43:32 Europe/Berlin] POST data: Array
+(
+    [article_id] => 3
+    [emoji] => ❤️
+)
+
+[13-Dec-2025 17:43:32 Europe/Berlin] ADD Reaction - Article ID: 3, Emoji: ❤️
+[13-Dec-2025 17:43:32 Europe/Berlin] Adding reaction for user: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 17:43:32 Europe/Berlin] Reaction add result: SUCCESS
+[13-Dec-2025 17:43:32 Europe/Berlin] === ReactionController ===
+[13-Dec-2025 17:43:32 Europe/Berlin] Method: GET
+[13-Dec-2025 17:43:32 Europe/Berlin] Query: controller=reaction&action=handle&article_id=3
+[13-Dec-2025 17:43:32 Europe/Berlin] POST data: Array
+(
+)
+
+[13-Dec-2025 17:43:32 Europe/Berlin] GET Reactions - Article ID: 3
+[13-Dec-2025 17:43:32 Europe/Berlin] User ID: guest_693d456b18984_257f7e7382891b3d53ccdab4fdf2d821
+[13-Dec-2025 17:43:32 Europe/Berlin] Reactions found: 1
+[13-Dec-2025 17:43:32 Europe/Berlin] User reaction: ❤️

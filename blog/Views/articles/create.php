@@ -200,10 +200,6 @@
             color: #ff3333;
             font-size: 12px;
             margin-top: 5px;
-            display: none;
-        }
-        
-        .required-indicator.show {
             display: block;
         }
         
@@ -582,11 +578,7 @@
         </div>
         
         <!-- Formulaire de création -->
-    <?php if (defined('USE_ADMIN_VIEW') && USE_ADMIN_VIEW): ?>
-    <form method="POST" action="index.php?section=posts&action=create" class="create-form-container" id="createForm">
-    <?php else: ?>
-    <form method="POST" action="index.php?controller=article&action=create" class="create-form-container" id="createForm">
-    <?php endif; ?>
+       <form method="POST" action="index.php?controller=article&action=create" class="create-form-container" id="createForm">
             <div class="form-group">
                 <label for="titre" class="form-label">
                     Titre de l'article <span>*</span>
@@ -621,35 +613,59 @@
                 </div>
             </div>
             
-            <!-- Catégorie -->
-            <div class="form-group">
-                <label for="categorie" class="form-label">Catégorie</label>
-                <select id="categorie" name="categorie" class="form-select">
-                    <option value="">Sélectionnez une catégorie</option>
-                    <option value="technologie">Technologie</option>
-                    <option value="science">Science</option>
-                    <option value="design">Design</option>
-                    <option value="business">Business</option>
-                    <option value="lifestyle">Lifestyle</option>
-                    <option value="education">Éducation</option>
-                </select>
-                <div class="category-suggestions">
-                    <div class="category-tag" data-category="technologie">Technologie</div>
-                    <div class="category-tag" data-category="science">Science</div>
-                    <div class="category-tag" data-category="design">Design</div>
-                    <div class="category-tag" data-category="business">Business</div>
-                    <div class="category-tag" data-category="lifestyle">Lifestyle</div>
+            <!-- Catégorie optionnelle -->
+            <div class="optional-section">
+                <div class="section-toggle" id="categoryToggle">
+                    Ajouter une catégorie
+                </div>
+                <div class="optional-content" id="categoryContent">
+                    <div class="form-group">
+                        <label for="categorie" class="form-label">Catégorie</label>
+                        <select id="categorie" name="categorie" class="form-select">
+                            <option value="">Sélectionnez une catégorie</option>
+                            <option value="technologie">Technologie</option>
+                            <option value="science">Science</option>
+                            <option value="design">Design</option>
+                            <option value="business">Business</option>
+                            <option value="lifestyle">Lifestyle</option>
+                            <option value="education">Éducation</option>
+                        </select>
+                        <div class="category-suggestions">
+                            <div class="category-tag" data-category="technologie">Technologie</div>
+                            <div class="category-tag" data-category="science">Science</div>
+                            <div class="category-tag" data-category="design">Design</div>
+                            <div class="category-tag" data-category="business">Business</div>
+                            <div class="category-tag" data-category="lifestyle">Lifestyle</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <!-- Statut -->
-            <div class="form-group">
-                <label for="statut" class="form-label">Statut</label>
-                <select id="statut" name="statut" class="form-select">
-                    <option value="brouillon">Brouillon</option>
-                    <option value="publie" selected>Publié</option>
-                    <option value="archive">Archivé</option>
-                </select>
+            <!-- Statut optionnel -->
+            <div class="optional-section">
+                <div class="section-toggle" id="statusToggle">
+                    Paramètres avancés
+                </div>
+                <div class="optional-content" id="statusContent">
+                    <div class="form-group">
+                        <label for="statut" class="form-label">Statut</label>
+                        <select id="statut" name="statut" class="form-select">
+                            <option value="brouillon">Brouillon</option>
+                            <option value="publie" selected>Publié</option>
+                            <option value="archive">Archivé</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="visible_tags" class="form-label">Mots-clés</label>
+                        <input type="text" 
+                               id="visible_tags" 
+                               name="visible_tags" 
+                               class="form-input" 
+                               placeholder="Ajoutez des mots-clés séparés par des virgules"
+                               maxlength="100">
+                    </div>
+                </div>
             </div>
             
             <!-- Bouton de prévisualisation -->
@@ -680,11 +696,23 @@
                 </div>
                 
                 <div class="btn-group-right">
-                    <?php if (defined('USE_ADMIN_VIEW') && USE_ADMIN_VIEW): ?>
-                    <a href="index.php?section=posts&action=index" class="btn btn-cancel">
-                    <?php else: ?>
                     <a href="index.php?controller=article&action=index" class="btn btn-cancel">
-                    <?php endif; ?>
+                        <span class="btn-icon">↩️</span>
+                        Annuler
+                    </a>
+                </div>
+            </div>
+                        <!-- Actions du formulaire -->
+            <div class="form-actions">
+                <div class="btn-group-left">
+                    <button type="submit" class="btn btn-create" id="createBtn">
+                        <span class="btn-icon">🚀</span>
+                        Publier l'article
+                    </button>
+                </div>
+                
+                <div class="btn-group-right">
+                    <a href="index.php?controller=article&action=index" class="btn btn-cancel">
                         <span class="btn-icon">↩️</span>
                         Annuler
                     </a>
@@ -828,6 +856,20 @@
     titleInput.addEventListener('input', updatePreview);
     contentInput.addEventListener('input', updatePreview);
     
+    // Sections optionnelles
+    const categoryToggle = document.getElementById('categoryToggle');
+    const statusToggle = document.getElementById('statusToggle');
+    const categoryContent = document.getElementById('categoryContent');
+    const statusContent = document.getElementById('statusContent');
+    
+    categoryToggle.addEventListener('click', function() {
+        categoryToggle.classList.toggle('active');
+    });
+    
+    statusToggle.addEventListener('click', function() {
+        statusToggle.classList.toggle('active');
+    });
+    
     // Suggestions de catégories
     const categoryTags = document.querySelectorAll('.category-tag');
     const categorySelect = document.getElementById('categorie');
@@ -883,37 +925,23 @@
     const createBtn = document.getElementById('createBtn');
     
     form.addEventListener('submit', function(e) {
-        // Réinitialiser tous les indicateurs
-        document.querySelectorAll('.required-indicator').forEach(indicator => {
-            indicator.classList.remove('show');
-        });
-        
-        let hasError = false;
-        
         // Vérifier le titre
         if (!titleInput.value.trim()) {
             e.preventDefault();
-            hasError = true;
+            alert('Le titre est obligatoire.');
             titleInput.focus();
             titleInput.style.borderColor = '#ff3333';
             titleInput.style.boxShadow = '0 0 0 2px rgba(255, 51, 51, 0.2)';
-            titleInput.parentElement.querySelector('.required-indicator').classList.add('show');
-            if (!contentInput.value.trim()) {
-                contentInput.style.borderColor = '#ff3333';
-                contentInput.style.boxShadow = '0 0 0 2px rgba(255, 51, 51, 0.2)';
-                contentInput.parentElement.querySelector('.required-indicator').classList.add('show');
-            }
             return;
         }
         
         // Vérifier le contenu
         if (!contentInput.value.trim()) {
             e.preventDefault();
-            hasError = true;
+            alert('Le contenu est obligatoire.');
             contentInput.focus();
             contentInput.style.borderColor = '#ff3333';
             contentInput.style.boxShadow = '0 0 0 2px rgba(255, 51, 51, 0.2)';
-            contentInput.parentElement.querySelector('.required-indicator').classList.add('show');
             return;
         }
         
@@ -944,16 +972,16 @@
         input.addEventListener('focus', function() {
             this.style.borderColor = '#00ff88';
             this.style.boxShadow = '0 0 0 2px rgba(0, 255, 136, 0.2)';
-            // Hide validation message when user starts editing
-            const indicator = this.parentElement.querySelector('.required-indicator');
-            if (indicator) {
-                indicator.classList.remove('show');
-            }
         });
         
         input.addEventListener('blur', function() {
-            this.style.borderColor = '#3a3a3a';
-            this.style.boxShadow = 'none';
+            if (this.value.trim() === '' && this.hasAttribute('required')) {
+                this.style.borderColor = '#ff3333';
+                this.style.boxShadow = '0 0 0 2px rgba(255, 51, 51, 0.2)';
+            } else {
+                this.style.borderColor = '#3a3a3a';
+                this.style.boxShadow = 'none';
+            }
         });
     });
     

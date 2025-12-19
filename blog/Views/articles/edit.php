@@ -522,11 +522,7 @@
         </div>
         
         <!-- Formulaire d'édition -->
-        <?php if (defined('USE_ADMIN_VIEW') && USE_ADMIN_VIEW): ?>
-        <form action="index.php?section=posts&action=update&id=<?= $article['id'] ?>" method="POST" class="edit-form-container" id="editForm">
-        <?php else: ?>
         <form action="index.php?controller=article&action=update&id=<?= $article['id'] ?>" method="POST" class="edit-form-container" id="editForm">
-        <?php endif; ?>
             <div class="form-group">
                 <label for="titre" class="form-label">
                     Titre de l'article <span>*</span>
@@ -611,19 +607,11 @@
                 </div>
                 
                 <div class="btn-group-right">
-                    <?php if (defined('USE_ADMIN_VIEW') && USE_ADMIN_VIEW): ?>
-                    <a href="index.php?section=posts&action=index" class="btn btn-cancel">
-                    <?php else: ?>
                     <a href="index.php?controller=article&action=index" class="btn btn-cancel">
-                    <?php endif; ?>
                         <span class="btn-icon">↩️</span>
                         Annuler
                     </a>
-                    <?php if (defined('USE_ADMIN_VIEW') && USE_ADMIN_VIEW): ?>
-                    <a href="index.php?section=posts&action=delete&id=<?= $article['id'] ?>" 
-                    <?php else: ?>
                     <a href="index.php?controller=article&action=delete&id=<?= $article['id'] ?>" 
-                    <?php endif; ?>
                        class="btn btn-delete"
                        onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ? Cette action est irréversible.')">
                         <span class="btn-icon">🗑️</span>

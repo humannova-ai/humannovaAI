@@ -38,7 +38,7 @@ $article_data = null;
 if ($article_id > 0) {
     try {
         // Chemin absolu vers les modèles
-        require_once __DIR__ . '/../../../shared/Models/Article.php';
+        require_once __DIR__ . '/../../Models/Article.php';
         $articleModel = new Article();
         $article_data = $articleModel->readById($article_id);
         

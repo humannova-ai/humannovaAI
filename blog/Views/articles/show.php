@@ -1,10 +1,9 @@
 <?php
+ include 'social_share_fixed.php';
 // Views/articles/show.php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
-if (file_exists(ROOT_PATH . '/blog/Views/partials/_navbar.php')) include ROOT_PATH . '/blog/Views/partials/_navbar.php';
 
 $errors = $_SESSION['errors'] ?? [];
 $form_data = $_SESSION['form_data'] ?? [];
@@ -20,331 +19,150 @@ unset($_SESSION['errors'], $_SESSION['form_data'], $_SESSION['success']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($article['titre']) ?> - PRO MANAGE AI</title>
     
+    <!-- CSS -->
     <link rel="stylesheet" href="Views/css/theme.css">
+    <link rel="stylesheet" href="Views/css/reactions.css">
+    <link rel="stylesheet" href="Views/css/social_share.css">
     <style>
-        .article-actions {
-            display: flex;
-            gap: 0;
-            padding: 0;
-            margin: 30px 0;
-            background: #1a1a1a;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        .theme-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
         }
         
-        .action-btn {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 16px 20px;
-            background: #1a1a1a;
-            border: none;
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            font-size: 15px;
-            font-weight: 500;
+        .theme-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+        
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .theme-slider {
+            position: absolute;
             cursor: pointer;
-            transition: all 0.3s ease;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            border-radius: 34px;
+            transition: .4s;
         }
         
-        .action-btn:last-child {
-            border-right: none;
+        .theme-slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            border-radius: 50%;
+            transition: .4s;
         }
         
-        .action-btn:hover {
-            background: #2a2a2a;
-            transform: translateY(-1px);
+        input:checked + .theme-slider {
+            background-color: #2196F3;
         }
         
-        .action-btn:active {
-            transform: translateY(0);
+        input:checked + .theme-slider:before {
+            transform: translateX(30px);
         }
         
-        .action-btn span {
-            font-size: 18px;
+        .theme-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
         }
         
-        .emoji-reaction-btn:hover {
-            transform: scale(1.2) rotate(10deg);
-            border-color: rgba(255,255,255,1) !important;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            background: white !important;
+        .theme-icon.sun {
+            left: 8px;
         }
         
-        .emoji-reaction-btn:active {
-            transform: scale(0.9);
-            animation: bounce 0.5s ease;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: scale(0.9); }
-            50% { transform: scale(1.3); }
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        #reactions-panel.active {
-            animation: slideDown 0.3s ease;
-        }
-        
-        #share-panel.active {
-            animation: slideDown 0.3s ease;
-        }
-        
-        #share-panel button:hover {
-            transform: scale(1.15) rotate(-5deg);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        #share-panel button:active {
-            transform: scale(0.95);
+        .theme-icon.moon {
+            right: 8px;
         }
     </style>
 </head>
 <body data-theme="<?= $_COOKIE['theme'] ?? 'light' ?>">
+    <!-- Switch thème -->
+    <?php include 'Views/layout/_theme_switcher.php'; ?>
+    
+    <!-- Barre de progression de lecture -->
+    <div class="reading-progress" id="reading-progress"></div>
     
     <div class="article-container">
         <h1><?= htmlspecialchars($article['titre']) ?></h1>
+        
+        <!-- Meta informations -->
+        <div class="article-meta">
+            <span class="meta-item">📅 <?= date('d/m/Y', strtotime($article['date_creation'] ?? 'now')) ?></span>
+            <span class="meta-item">👁️ <?= $article['views'] ?? 0 ?> vues</span>
+            <span class="meta-item">⏱️ <?= $article['reading_time'] ?? 5 ?> min</span>
+            <?php if(isset($article['tags']) && !empty($article['tags'])): ?>
+                <span class="meta-item">🏷️ <?= htmlspecialchars($article['tags']) ?></span>
+            <?php endif; ?>
+        </div>
+        
+        <!-- Image si disponible -->
+        <?php if(isset($article['image']) && !empty($article['image'])): ?>
+            <div class="article-image">
+                <img src="<?= htmlspecialchars($article['image']) ?>" alt="<?= htmlspecialchars($article['titre']) ?>">
+            </div>
+        <?php endif; ?>
         
         <!-- Contenu -->
         <div class="article-content">
             <?= nl2br(htmlspecialchars($article['contenu'] ?? '')) ?>
         </div>
         
-        <!-- Action Buttons -->
-        <div class="article-actions">
-            <button class="action-btn" onclick="toggleReactionsPanel()">
-                <span>👍</span> J'aime
-            </button>
-            <button class="action-btn" onclick="openCommentsModal()">
-                <span>💬</span> Commenter
-            </button>
-            <button class="action-btn" onclick="shareArticle()">
-                <span>📤</span> Partager
-            </button>
-        </div>
+        <!-- Section réactions -->
+        <?php include 'Views/articles/_reactions.php'; ?>
         
-        <!-- Reactions Panel (Hidden by default) -->
-        <div id="reactions-panel" style="display: none; margin: 20px 0; padding: 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; text-align: center; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);">
-            <p style="margin-bottom: 20px; font-weight: 700; color: white; font-size: 18px;">✨ Choisissez votre réaction</p>
-            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-                <button class="emoji-reaction-btn" onclick="sendQuickReaction('👍', event)" data-emoji="👍" style="font-size: 36px; padding: 15px; border: 3px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95); border-radius: 50%; cursor: pointer; transition: all 0.3s; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center;">👍</button>
-                <button class="emoji-reaction-btn" onclick="sendQuickReaction('❤️', event)" data-emoji="❤️" style="font-size: 36px; padding: 15px; border: 3px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95); border-radius: 50%; cursor: pointer; transition: all 0.3s; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center;">❤️</button>
-                <button class="emoji-reaction-btn" onclick="sendQuickReaction('😮', event)" data-emoji="😮" style="font-size: 36px; padding: 15px; border: 3px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95); border-radius: 50%; cursor: pointer; transition: all 0.3s; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center;">😮</button>
-                <button class="emoji-reaction-btn" onclick="sendQuickReaction('😄', event)" data-emoji="😄" style="font-size: 36px; padding: 15px; border: 3px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95); border-radius: 50%; cursor: pointer; transition: all 0.3s; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center;">😄</button>
-                <button class="emoji-reaction-btn" onclick="sendQuickReaction('🔥', event)" data-emoji="🔥" style="font-size: 36px; padding: 15px; border: 3px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95); border-radius: 50%; cursor: pointer; transition: all 0.3s; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center;">🔥</button>
-                <button class="emoji-reaction-btn" onclick="sendQuickReaction('👏', event)" data-emoji="👏" style="font-size: 36px; padding: 15px; border: 3px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95); border-radius: 50%; cursor: pointer; transition: all 0.3s; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center;">👏</button>
-            </div>
-            <div id="reaction-stats" style="margin-top: 20px; padding-top: 20px; border-top: 2px solid rgba(255,255,255,0.3); font-size: 15px; color: white; font-weight: 600;"></div>
-        </div>
-        
-        <!-- Share Panel (Hidden by default) -->
-        <div id="share-panel" style="display: none; margin: 20px 0; padding: 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; text-align: center; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);">
-            <p style="margin-bottom: 20px; font-weight: 700; color: white; font-size: 18px;">📣 Partager cet article</p>
-            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-                <button onclick="shareOnPlatform('facebook')" style="font-size: 32px; padding: 15px; border: 3px solid rgba(255,255,255,0.3); background: #1877f2; border-radius: 50%; cursor: pointer; transition: all 0.3s; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-family: Arial, sans-serif;">f</button>
-                <button onclick="shareOnPlatform('twitter')" style="font-size: 32px; padding: 15px; border: 3px solid rgba(255,255,255,0.3); background: #000000; border-radius: 50%; cursor: pointer; transition: all 0.3s; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">𝕏</button>
-                <button onclick="shareOnPlatform('linkedin')" style="font-size: 26px; padding: 15px; border: 3px solid rgba(255,255,255,0.3); background: #0077b5; border-radius: 50%; cursor: pointer; transition: all 0.3s; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-family: Arial, sans-serif;">in</button>
-                <button onclick="shareOnPlatform('whatsapp')" style="font-size: 42px; padding: 15px; border: 3px solid rgba(255,255,255,0.3); background: #25D366; border-radius: 50%; cursor: pointer; transition: all 0.3s; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; color: white;">💬</button>
-                <button onclick="shareOnPlatform('copy')" style="font-size: 32px; padding: 15px; border: 3px solid rgba(255,255,255,0.3); background: #546e7a; border-radius: 50%; cursor: pointer; transition: all 0.3s; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; color: white;">📄</button>
-            </div>
-            <div id="share-feedback" style="margin-top: 20px; padding-top: 20px; border-top: 2px solid rgba(255,255,255,0.3); font-size: 15px; color: white; font-weight: 600;"></div>
-        </div>
+        <!-- Section partage social -->
+        <?php include 'Views/articles/_social_share.php'; ?>
         
         <!-- Section commentaires -->
         <?php if(file_exists('Views/articles/comments_section.php')): ?>
-            <?php $articleId = $article['id'] ?? 0; ?>
-            <?php include 'Views/articles/comments_section.php'; ?>
+            <div class="comments-section">
+                <h2>Interactions</h2>
+                <?php include 'Views/articles/comments_section.php'; ?>
+            </div>
         <?php endif; ?>
+        
+        <!-- Navigation -->
+        <div class="article-navigation">
+            <a href="index.php?controller=article&action=index" class="btn-back">
+                ← Retour aux articles
+            </a>
+        </div>
     </div>
     
     <!-- Scripts JavaScript -->
-    <?php if (file_exists(ROOT_PATH . '/blog/Views/partials/chat.php')) include ROOT_PATH . '/blog/Views/partials/chat.php'; ?>
-
     <script>
-    // Toggle Reactions Panel
-    function toggleReactionsPanel() {
-        const panel = document.getElementById('reactions-panel');
-        if (panel.style.display === 'none') {
-            panel.style.display = 'block';
-            panel.classList.add('active');
-            loadReactionStats();
-        } else {
-            panel.style.display = 'none';
-            panel.classList.remove('active');
+    // Barre de progression de lecture
+    window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        const progressBar = document.getElementById('reading-progress');
+        if (progressBar) {
+            progressBar.style.width = scrolled + "%";
         }
-    }
+    });
     
-    // Send Quick Reaction
-    async function sendQuickReaction(emoji, e) {
-        const articleId = <?= $article['id'] ?? 0 ?>;
-        if (!articleId) {
-            alert('Erreur: Article non trouvé');
-            return;
-        }
-        
-        console.log('Sending reaction:', emoji, 'for article:', articleId);
-        
-        try {
-            const formData = new FormData();
-            formData.append('article_id', articleId);
-            formData.append('type', 'like');
-            formData.append('auteur', '<?= $_SESSION['user_name'] ?? 'Utilisateur' ?>');
-            formData.append('email', '<?= $_SESSION['user_email'] ?? 'user@example.com' ?>');
-            formData.append('message', emoji);
-            
-            const response = await fetch(window.location.origin + (window.SITE_BASE || '') + '/blog/index.php?controller=interaction&action=create', {
-                method: 'POST',
-                body: formData
-            });
-            
-            console.log('Response status:', response.status);
-            const text = await response.text();
-            console.log('Response:', text);
-            
-            if (response.ok) {
-                // Visual feedback
-                if (e && e.target) {
-                    e.target.style.transform = 'scale(1.2)';
-                    setTimeout(() => {
-                        e.target.style.transform = 'scale(1)';
-                    }, 200);
-                }
-                
-                // Show success message
-                const statsDiv = document.getElementById('reaction-stats');
-                statsDiv.innerHTML = '<span style="color: #4caf50;">✅ Réaction ajoutée avec succès!</span>';
-                
-                setTimeout(() => {
-                    loadReactionStats();
-                }, 1000);
-            } else {
-                alert('Erreur lors de l\'ajout de la réaction');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Erreur: ' + error.message);
-        }
-    }
-    
-    // Load Reaction Statistics
-    async function loadReactionStats() {
-        const articleId = <?= $article['id'] ?? 0 ?>;
-        const statsDiv = document.getElementById('reaction-stats');
-        
-        if (!statsDiv) return;
-        
-        try {
-            const response = await fetch(window.location.origin + (window.SITE_BASE || '') + '/blog/index.php?controller=interaction&action=getStats&article_id=' + articleId);
-            const text = await response.text();
-            console.log('Stats response:', text);
-            
-            const data = JSON.parse(text);
-            
-            if (data.success && data.stats) {
-                const total = data.stats.total || 0;
-                const emojis = data.stats.emojis || [];
-                
-                let html = '<strong>Total: ' + total + ' réaction' + (total > 1 ? 's' : '') + '</strong>';
-                
-                if (emojis.length > 0) {
-                    html += '<div style="margin-top: 10px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">';
-                    const emojiCounts = {};
-                    emojis.forEach(e => {
-                        emojiCounts[e] = (emojiCounts[e] || 0) + 1;
-                    });
-                    Object.keys(emojiCounts).forEach(emoji => {
-                        html += '<span style="font-size: 20px;">' + emoji + ' ' + emojiCounts[emoji] + '</span>';
-                    });
-                    html += '</div>';
-                }
-                
-                statsDiv.innerHTML = html;
-            } else {
-                statsDiv.innerHTML = '<span>Soyez le premier à réagir!</span>';
-            }
-        } catch (error) {
-            console.error('Could not load stats:', error);
-            statsDiv.innerHTML = '<span>Chargement...</span>';
-        }
-    }
-    
-    // Share Article
-    function shareArticle() {
-        const panel = document.getElementById('share-panel');
-        if (panel.style.display === 'none') {
-            panel.style.display = 'block';
-            panel.classList.add('active');
-            // Close reactions panel if open
-            const reactionsPanel = document.getElementById('reactions-panel');
-            if (reactionsPanel) {
-                reactionsPanel.style.display = 'none';
-                reactionsPanel.classList.remove('active');
-            }
-        } else {
-            panel.style.display = 'none';
-            panel.classList.remove('active');
-        }
-    }
-    
-    function shareOnPlatform(platform) {
-        const url = window.location.href;
-        const title = document.querySelector('h1').textContent;
-        const feedbackDiv = document.getElementById('share-feedback');
-        
-        let shareUrl = '';
-        
-        switch(platform) {
-            case 'facebook':
-                shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url);
-                window.open(shareUrl, '_blank', 'width=600,height=400');
-                feedbackDiv.innerHTML = '<span style="color: #4caf50;">📘 Ouverture de Facebook...</span>';
-                break;
-            case 'twitter':
-                shareUrl = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title);
-                window.open(shareUrl, '_blank', 'width=600,height=400');
-                feedbackDiv.innerHTML = '<span style="color: #4caf50;">𝕏 Ouverture de Twitter...</span>';
-                break;
-            case 'linkedin':
-                shareUrl = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url);
-                window.open(shareUrl, '_blank', 'width=600,height=400');
-                feedbackDiv.innerHTML = '<span style="color: #4caf50;">💼 Ouverture de LinkedIn...</span>';
-                break;
-            case 'whatsapp':
-                shareUrl = 'https://wa.me/?text=' + encodeURIComponent(title + ' ' + url);
-                window.open(shareUrl, '_blank');
-                feedbackDiv.innerHTML = '<span style="color: #4caf50;">📱 Ouverture de WhatsApp...</span>';
-                break;
-            case 'copy':
-                navigator.clipboard.writeText(url).then(() => {
-                    feedbackDiv.innerHTML = '<span style="color: #4caf50;">✅ Lien copié dans le presse-papiers!</span>';
-                    setTimeout(() => {
-                        feedbackDiv.innerHTML = '';
-                    }, 3000);
-                }).catch(() => {
-                    feedbackDiv.innerHTML = '<span style="color: #ff6b6b;">❌ Erreur lors de la copie</span>';
-                });
-                break;
-        }
-        
-        if (platform !== 'copy') {
-            setTimeout(() => {
-                feedbackDiv.innerHTML = '';
-            }, 3000);
-        }
-    }
+    // Gestion du thème
+    document.addEventListener('themeChanged', (e) => {
+        console.log('Thème changé:', e.detail.theme);
+    });
     </script>
 </body>
 </html>

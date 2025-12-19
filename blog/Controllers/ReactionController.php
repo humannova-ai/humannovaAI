@@ -1,5 +1,6 @@
 <?php
-require_once ROOT_PATH . '/shared/Models/Reaction.php';
+// Controllers/ReactionController.php
+require_once __DIR__ . '/../Models/Reaction.php';
 
 class ReactionController {
     private $reactionModel;
@@ -26,6 +27,12 @@ class ReactionController {
             exit;
         }
         
+        // Journalisation détaillée
+        error_log("=== ReactionController ===");
+        error_log("Method: " . $_SERVER['REQUEST_METHOD']);
+        error_log("Query: " . $_SERVER['QUERY_STRING']);
+        error_log("POST data: " . print_r($_POST, true));
+        
         try {
             switch($_SERVER['REQUEST_METHOD']) {
                 case 'GET':
@@ -45,12 +52,16 @@ class ReactionController {
                     break;
             }
         } catch (Exception $e) {
+            error_log("ReactionController error: " . $e->getMessage());
+            error_log("Stack trace: " . $e->getTraceAsString());
             $this->jsonResponse(['success' => false, 'error' => 'Erreur interne: ' . $e->getMessage()], 500);
         }
     }
     
     private function getReactions() {
         $article_id = $_GET['article_id'] ?? null;
+        
+        error_log("GET Reactions - Article ID: " . $article_id);
         
         if (!$article_id) {
             $this->jsonResponse(['success' => false, 'error' => 'Article ID requis'], 400);
@@ -63,13 +74,18 @@ class ReactionController {
             return;
         }
         
+        // Utiliser l'ID de session ou générer un ID unique pour les invités
         $user_id = $_SESSION['user_id'] ?? $this->getGuestId();
+        error_log("User ID: " . $user_id);
         
         try {
             $reactions = $this->reactionModel->getByArticle($article_id);
             $user_reaction = $this->reactionModel->getUserReaction($article_id, $user_id);
             $available_emojis = $this->reactionModel->getAvailableEmojis();
             $stats = $this->reactionModel->getStats($article_id);
+            
+            error_log("Reactions found: " . count($reactions));
+            error_log("User reaction: " . ($user_reaction ?? 'none'));
             
             $this->jsonResponse([
                 'success' => true,
@@ -79,22 +95,27 @@ class ReactionController {
                 'stats' => $stats
             ]);
         } catch (Exception $e) {
+            error_log("Error getting reactions: " . $e->getMessage());
             $this->jsonResponse(['success' => false, 'error' => 'Erreur lors de la récupération: ' . $e->getMessage()], 500);
         }
     }
     
     private function addReaction() {
+        // Vérifier si c'est une requête POST multipart/form-data
         $article_id = $_POST['article_id'] ?? null;
         $emoji = $_POST['emoji'] ?? null;
         
         // Si pas dans $_POST, essayer de lire php://input
         if (!$article_id || !$emoji) {
             $input = file_get_contents('php://input');
+            error_log("Raw input: " . $input);
             parse_str($input, $data);
             
             $article_id = $data['article_id'] ?? null;
             $emoji = $data['emoji'] ?? null;
         }
+        
+        error_log("ADD Reaction - Article ID: " . $article_id . ", Emoji: " . $emoji);
         
         if (!$article_id) {
             $this->jsonResponse(['success' => false, 'error' => 'Article ID requis'], 400);
@@ -113,9 +134,12 @@ class ReactionController {
         }
         
         $user_id = $_SESSION['user_id'] ?? $this->getGuestId();
+        error_log("Adding reaction for user: " . $user_id);
         
         try {
             $success = $this->reactionModel->add($article_id, $user_id, $emoji);
+            
+            error_log("Reaction add result: " . ($success ? 'SUCCESS' : 'FAILED'));
             
             if ($success) {
                 $reactions = $this->reactionModel->getByArticle($article_id);
@@ -132,6 +156,7 @@ class ReactionController {
                 $this->jsonResponse(['success' => false, 'error' => 'Émoji invalide ou erreur base de données'], 400);
             }
         } catch (Exception $e) {
+            error_log("Error adding reaction: " . $e->getMessage());
             $this->jsonResponse(['success' => false, 'error' => 'Erreur lors de l\'ajout: ' . $e->getMessage()], 500);
         }
     }
@@ -141,6 +166,8 @@ class ReactionController {
         parse_str($input, $data);
         
         $article_id = $data['article_id'] ?? null;
+        
+        error_log("REMOVE Reaction - Article ID: " . $article_id);
         
         if (!$article_id) {
             $this->jsonResponse(['success' => false, 'error' => 'Article ID requis'], 400);
@@ -164,6 +191,7 @@ class ReactionController {
                 'reactions' => $success ? $this->reactionModel->getByArticle($article_id) : []
             ]);
         } catch (Exception $e) {
+            error_log("Error removing reaction: " . $e->getMessage());
             $this->jsonResponse(['success' => false, 'error' => 'Erreur lors de la suppression: ' . $e->getMessage()], 500);
         }
     }
@@ -181,3 +209,4 @@ class ReactionController {
         exit;
     }
 }
+?>
